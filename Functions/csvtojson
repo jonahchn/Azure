@@ -1,0 +1,71 @@
+using CsvHelper;
+using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Extensions.Http;
+using Microsoft.Azure.WebJobs.Host;
+using Newtonsoft.Json;
+using System;
+using System.IO;
+using System.Net;
+using System.Net.Http;
+
+namespace MyFunctions
+{
+  public static class csvtojson
+  {
+    [FunctionName("NessusReceiver")]
+    public static HttpResponseMessage Run(
+      [HttpTrigger(AuthorizationLevel.Function, new string[] {"get", "post"}, Route = null)] HttpRequestMessage req,
+      TraceWriter log)
+    {
+      log.Info("C# HTTP trigger function CSVToJSON started a request.");
+      string result = req.Content.ReadAsStringAsync().Result;
+      int num = 0;
+      try
+      {
+        using (TextReader textReader = (TextReader) new StringReader(result))
+        {
+          while (textReader.Peek() > 0)
+          {
+            if (!textReader.ReadLine().Contains(","))
+              ++num;
+            else
+              break;
+          }
+        }
+        log.Info(string.Format("Lines Skipped : {0}", (object) num));
+        using (TextReader reader = (TextReader) new StringReader(result))
+        {
+          for (int index = 1; index <= num; ++index)
+            reader.ReadLine();
+          using (CsvReader csvReader = new CsvReader(reader))
+          {
+            string str = JsonConvert.SerializeObject((object) csvReader.GetRecords<object>());
+            log.Info("C# HTTP trigger function CSVToJSON completed a request.");
+            return System.Net.Http.HttpRequestMessageExtensions.CreateResponse<string>(req, HttpStatusCode.OK, str);
+          }
+        }
+      }
+      catch (Exception ex)
+      {
+        log.Error(ex.Message);
+        log.Info("C# HTTP trigger function CSVToJSON Error.");
+        return System.Net.Http.HttpRequestMessageExtensions.CreateResponse(req, HttpStatusCode.InternalServerError);
+      }
+      finally
+      {
+      }
+    }
+
+    private static string[] ToLines(string dataIn)
+    {
+      char[] chArray1 = new char[1]{ '\r' };
+      char[] chArray2 = new char[1]{ '\n' };
+      char[] chArray3 = chArray1;
+      if (dataIn.IndexOf('\n') > 0 && dataIn.IndexOf('\r') > 0)
+        dataIn = dataIn.Replace("\n", "");
+      else if (dataIn.IndexOf('\n') > 0)
+        chArray3 = chArray2;
+      return dataIn.Split(chArray3);
+    }
+  }
+}
