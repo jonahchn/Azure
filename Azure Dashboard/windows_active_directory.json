@@ -1,0 +1,2024 @@
+{
+  "properties": {
+    "lenses": {
+      "0": {
+        "order": 0,
+        "parts": {
+          "0": {
+            "position": {
+              "x": 0,
+              "y": 0,
+              "colSpan": 14,
+              "rowSpan": 1
+            },
+            "metadata": {
+              "inputs": [],
+              "type": "Extension/HubsExtension/PartType/MarkdownPart",
+              "settings": {
+                "content": {
+                  "settings": {
+                    "content": "<div style=\"font-size:300%;\">General Overview</div>",
+                    "title": "",
+                    "subtitle": "",
+                    "markdownUri": null
+                  }
+                }
+              }
+            }
+          },
+          "1": {
+            "position": {
+              "x": 15,
+              "y": 0,
+              "colSpan": 13,
+              "rowSpan": 1
+            },
+            "metadata": {
+              "inputs": [],
+              "type": "Extension/HubsExtension/PartType/MarkdownPart",
+              "settings": {
+                "content": {
+                  "settings": {
+                    "content": "<div style=\"font-size:300%;\">Group Policy</div>",
+                    "title": "",
+                    "subtitle": "",
+                    "markdownUri": null
+                  }
+                }
+              }
+            }
+          },
+          "2": {
+            "position": {
+              "x": 0,
+              "y": 1,
+              "colSpan": 4,
+              "rowSpan": 6
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": {
+                    "
+                  }
+                },
+                {
+                  "name": "Query",
+                  "value": "SecurityEvent\r\n| where EventID == 5136 or EventID == 5137 or EventID == 5138 or EventID == 5139 or EventID == 5141\r\n| where AccountType != \"Machine\" \r\n| extend Admin1=iff(SubjectUserName_5138_CF==\"\", SubjectUserName_5139_CF, SubjectUserName_5138_CF)\r\n| extend Admin2=iff(Admin1==\"\", SubjectUserName_5141_CF, Admin1)\r\n| extend Administrator=iff(Admin2==\"\", SubjectUserName, Admin2)\r\n| summarize Amount = count() by Administrator \r\n| project Administrator, Amount\r\n| sort by Amount \n"
+                },
+                {
+                  "name": "TimeRange",
+                  "value": "P1D"
+                },
+                {
+                  "name": "Version",
+                  "value": "1.0"
+                },
+                {
+                  "name": "DashboardId",
+                  "value": "/
+                },
+                {
+                  "name": "PartId",
+                  "value": "b606ed06-e4f7-403f-a822-295f52c6de57"
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics"
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "aaa-cloud"
+                },
+                {
+                  "name": "resourceTypeMode",
+                  "value": "workspace"
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsGrid"
+                },
+                {
+                  "name": "Dimensions",
+                  "isOptional": true
+                },
+                {
+                  "name": "SpecificChart",
+                  "isOptional": true
+                },
+                {
+                  "name": "Scope",
+                  "isOptional": true
+                },
+                {
+                  "name": "DraftRequestParameters",
+                  "isOptional": true
+                },
+                {
+                  "name": "LegendOptions",
+                  "isOptional": true
+                },
+                {
+                  "name": "IsQueryContainTimeRange",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/Microsoft_OperationsManagementSuite_Workspace/PartType/LogsDashboardPart",
+              "settings": {
+                "content": {
+                  "GridColumnsWidth": {
+                    "Administrator": "233px",
+                    "Changes": "154px"
+                  },
+                  "Query": "SecurityEvent\n| where Computer endswith \"aaa.gov\"\n| where EventID == 5136 or EventID == 5137 or EventID == 5138 or EventID == 5139 or EventID == 5141 or EventID == 4724 or EventID == 4725 or EventID == 4722\n| where AccountType != \"Machine\" \n| extend Admin1=iff(SubjectUserName_5138_CF==\"\", tolower(SubjectUserName_5139_CF), tolower(SubjectUserName_5138_CF))\n| extend Admin2=iff(Admin1==\"\", tolower(SubjectUserName_5141_CF), Admin1)\n| extend Administrator=iff(Admin2==\"\", tolower(SubjectUserName), Admin2)\n| summarize Changes = count() by Administrator\n| project Administrator, Changes\n| sort by Changes\n",
+                  "PartTitle": "Top active Administrators",
+                  "PartSubTitle": "Active Directory"
+                }
+              },
+              "asset": {
+                "idInputName": "ComponentId",
+                "type": "ApplicationInsights"
+              }
+            }
+          },
+          "3": {
+            "position": {
+              "x": 4,
+              "y": 1,
+              "colSpan": 4,
+              "rowSpan": 6
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": {
+                    "SubscriptionId":
+                  }
+                },
+                {
+                  "name": "Query",
+                  "value": "SecurityEvent\r\n| where EventID == 5141 or EventID == 5137\r\n| where SubjectUserName_5141_CF !endswith \"$\" or SubjectUserName_5141_CF != \"SYSTEM\"\r\n| where AccountType != \"Machine\" \r\n| where ObjectClass_5141_CF == \"group\" or ObjectClass_5141_CF == \"computer\" or ObjectClass_5141_CF == \"user\" or ObjectClass_5137_CF == \"group\" or ObjectClass_5137_CF == \"computer\" or ObjectClass_5137_CF == \"user\"   \r\n| extend Add_User=iff(ObjectClass_5137_CF==\"user\", ObjectClass_5137_CF, \"\"), Add_Group=iff(ObjectClass_5137_CF==\"group\", ObjectClass_5137_CF, \"\"), Add_Computer=iff(ObjectClass_5137_CF==\"computer\", ObjectClass_5137_CF, \"\"), Delete_User=iff(ObjectClass_5141_CF==\"user\", ObjectClass_5141_CF, \"\"), Delete_Group=iff(ObjectClass_5141_CF==\"group\", ObjectClass_5141_CF, \"\"), Delete_Computer=iff(ObjectClass_5141_CF==\"computer\", ObjectClass_5141_CF, \"\")\r\n| extend Operation1=iff(Add_User==\"user\", Add_User=\"Add user\", Add_Group)\r\n| extend Operation2=iff(Operation1==\"group\", Operation1=\"Add group\", Operation1)\r\n| extend Operation3=iff(Add_Computer==\"computer\", Add_Computer=\"Add computer\", Operation2)\r\n| extend Operation4=iff(Delete_Computer==\"computer\", Delete_Computer=\"Delete computer\", Operation3)\r\n| extend Operation5=iff(Delete_Group==\"group\", Delete_Group=\"Delete group\", Operation4)\r\n| extend Operation=iff(Delete_User==\"user\", Delete_User=\"Delete user\", Operation5)\r\n| summarize Amount= count() by Operation \n"
+                },
+                {
+                  "name": "TimeRange",
+                  "value": "P7D"
+                },
+                {
+                  "name": "Version",
+                  "value": "1.0"
+                },
+                {
+                  "name": "DashboardId",
+                  "value": "
+                },
+                {
+                  "name": "PartId",
+                  "value": "0a6b9d79-cddb-4e59-80a0-95ec266a1d63"
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics"
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "aaa-cloud"
+                },
+                {
+                  "name": "resourceTypeMode",
+                  "value": "workspace"
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsGrid"
+                },
+                {
+                  "name": "Dimensions",
+                  "isOptional": true
+                },
+                {
+                  "name": "SpecificChart",
+                  "isOptional": true
+                },
+                {
+                  "name": "Scope",
+                  "isOptional": true
+                },
+                {
+                  "name": "DraftRequestParameters",
+                  "isOptional": true
+                },
+                {
+                  "name": "LegendOptions",
+                  "isOptional": true
+                },
+                {
+                  "name": "IsQueryContainTimeRange",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/Microsoft_OperationsManagementSuite_Workspace/PartType/LogsDashboardPart",
+              "settings": {
+                "content": {
+                  "GridColumnsWidth": {
+                    "Operation": "227px",
+                    "Amount": "154px"
+                  },
+                  "Query": "SecurityEvent\n| where Computer endswith \"aaa.gov\"\n| where EventID == 5136 or EventID == 5137 or EventID == 5138 or EventID == 5139 or EventID == 5141 or EventID == 4724 or EventID == 4725 or EventID == 4722 or EventID == 4740\n| where SubjectUserName_5141_CF !endswith \"$\" or SubjectUserName_5141_CF != \"SYSTEM\"\n| where AccountType != \"Machine\" \n| where ObjectClass_5141_CF == \"group\" or ObjectClass_5141_CF == \"computer\" or ObjectClass_5141_CF == \"user\" or ObjectClass_5141_CF == \"organizationalUnit\" or ObjectClass_5141_CF == \"container\" or ObjectClass_5141_CF == \"domainDNS\" or ObjectClass_5137_CF == \"group\" or ObjectClass_5137_CF == \"computer\" or ObjectClass_5137_CF == \"user\" or ObjectClass_5139_CF == \"group\" or ObjectClass_5139_CF == \"computer\" or ObjectClass_5139_CF == \"user\" or AttributeLDAPDisplayName_5136_CF==\"gPLink\" or AttributeLDAPDisplayName_5136_CF==\"member\" or EventID == 4724 or EventID == 4725 or EventID == 5138 or EventID == 4722 or EventID == 4740\n| extend Add_User=iff(ObjectClass_5137_CF==\"user\", ObjectClass_5137_CF, \"\"), Add_Group=iff(ObjectClass_5137_CF==\"group\", ObjectClass_5137_CF, \"\"), Add_Computer=iff(ObjectClass_5137_CF==\"computer\", ObjectClass_5137_CF, \"\"), Delete_User=iff(ObjectClass_5141_CF==\"user\", ObjectClass_5141_CF, \"\"), Delete_Group=iff(ObjectClass_5141_CF==\"group\", ObjectClass_5141_CF, \"\"), Delete_Computer=iff(ObjectClass_5141_CF==\"computer\", ObjectClass_5141_CF, \"\"), delete_ou=iff(ObjectClass_5141_CF==\"organizationalUnit\", ObjectClass_5141_CF, \"\") ,delete_container=iff(ObjectClass_5141_CF==\"container\", ObjectClass_5141_CF, \"\"), delete_domaindns=iff(ObjectClass_5141_CF==\"domainDNS\", ObjectClass_5141_CF, \"\"), restored=iff(EventID==\"5138\", Activity, \"\" ), pwdattpt=iff(EventID==\"4724\", Account, \"\" ), acctenable=iff(EventID==\"4722\", Account, \"\"), acctdisable=iff(EventID==\"4725\", Account, \"\"), acctlock=iff(EventID==\"4740\", Activity, \"\"), move_user=iff(ObjectClass_5139_CF==\"user\", ObjectClass_5139_CF, \"\"), move_group=iff(ObjectClass_5139_CF==\"group\", ObjectClass_5139_CF, \"\"), move_computer=iff(ObjectClass_5139_CF==\"computer\", ObjectClass_5139_CF, \"\"), gpo_link=iff(AttributeLDAPDisplayName_5136_CF==\"gPLink\", OperationType, \"\"), del_member=iff(AttributeLDAPDisplayName_5136_CF==\"member\", ObjectClass_5136_CF, \"\"), member=iff(AttributeLDAPDisplayName_5136_CF==\"member\", OperationType, \"\")  \n| extend Operation1=iff(Add_User==\"user\", Add_User=\"Added users\", Add_Group)\n| extend Operation2=iff(Operation1==\"group\", Operation1=\"Added groups\", Operation1)\n| extend Operation3=iff(Add_Computer==\"computer\", Add_Computer=\"Added computers\", Operation2)\n| extend Operation4=iff(Delete_Computer==\"computer\", Delete_Computer=\"Deleted computers\", Operation3)\n| extend Operation5=iff(Delete_Group==\"group\", Delete_Group=\"Deleted groups\", Operation4)\n| extend Operation6=iff(Delete_User==\"user\", Delete_User=\"Deleted users\", Operation5)\n| extend Operation7=iff(delete_ou==\"organizationalUnit\", Delete_User=\"Deleted organizational units\", Operation6)\n| extend Operation8=iff(delete_container==\"container\", Delete_User=\"Deleted containers\", Operation7)\n| extend Operation9=iff(delete_domaindns==\"domainDNS\", Delete_User=\"Deleted domain objects\", Operation8)\n| extend Operation10=iff(pwdattpt!=\"\", pwdattpt=\"Password reset attempts\", Operation9) \n| extend Operation11=iff(acctdisable!=\"\", acctdisable=\"Disabled accounts\", Operation10) \n| extend Operation12=iff(acctenable!=\"\", acctenable=\"Enabled accounts\", Operation11) \n| extend Operation13=iff(move_user==\"user\", move_user=\"Relocated users\", Operation12)\n| extend Operation14=iff(move_computer==\"computer\", move_computer=\"Relocated computers\", Operation13) \n| extend Operation15=iff(move_group==\"group\", move_group=\"Relocated groups\", Operation14) \n| extend Operation16=iff(gpo_link==\"%%14674\", gpo_link=\"GPO linked to an OU\", Operation15)\n| extend Operation17=iff(gpo_link==\"%%14675\", gpo_link=\"GPO unlinked from an OU\", Operation16) \n| extend Operation18=iff(member==\"%%14674\", member=\"Group members added\", Operation17)\n| extend Operation19=iff(member==\"%%14675\", member=\"Group members removed\", Operation18)  \n| extend Operation20=iff(acctlock!=\"\", acctlock=\"User lockouts\", Operation19) \n| extend Operation=iff(restored!=\"\", restored=\"Restored from Recycle Bin\", Operation20) \n| summarize Amount= count() by Operation\n| sort by Operation asc\n",
+                  "PartTitle": "Administrator activity per operation",
+                  "PartSubTitle": "Active Directory"
+                }
+              },
+              "asset": {
+                "idInputName": "ComponentId",
+                "type": "ApplicationInsights"
+              }
+            }
+          },
+          "4": {
+            "position": {
+              "x": 8,
+              "y": 1,
+              "colSpan": 6,
+              "rowSpan": 3
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": {
+                  }
+                },
+                {
+                  "name": "Query",
+                  "value": "SecurityEvent\n| where EventID == 5136 or EventID == 5137 or EventID == 5138 or EventID == 5139 or EventID == 5141\n| where AccountType != \"Machine\" \n| extend Admin1=iff(SubjectUserName_5138_CF==\"\", SubjectUserName_5139_CF, SubjectUserName_5138_CF), CorrelationID1=iff(CorrelationID_5136_CF==\"\", CorrelationID_5137_CF, CorrelationID_5136_CF), ObjectType1=iff(ObjectClass_5136_CF==\"\", ObjectClass_5137_CF, ObjectClass_5136_CF), Value1=iff(OperationType==\"%%14674\",\"Added\",tostring(OperationType)), SubTreeDelete1=iff(TreeDelete_CF==\"14679.0\",\"No\",tostring(TreeDelete_CF)), ObjectName1=iff(ObjectDN5136_CF==\"\", ObjectDN5137_CF, ObjectDN5136_CF), OldObject=iff(OldObjectDN5138_CF==\"\", OldObjectDN_CF, OldObjectDN5138_CF), NewObject=iff(NewObjectDN5138_CF==\"\", NewObjectDN_CF, NewObjectDN5138_CF) \n| extend Admin2=iff(Admin1==\"\", SubjectUserName_5141_CF, Admin1), CorrelationID2=iff(CorrelationID1==\"\", CorrelationID5138_CF, CorrelationID1), ObjectType2=iff(ObjectType1==\"\", ObjectClass5138_CF, ObjectType1), Value=iff(Value1==\"%%14675\",\"Deleted\", tostring(Value1)), SubTreeDelete=iff(SubTreeDelete1==\"14678.0\",\"Yes\", tostring(SubTreeDelete1)), ObjectName=iff(ObjectName1==\"\", ObjectDN5141_CF, ObjectName1)\n| extend Administrator=iff(Admin2==\"\", SubjectUserName, Admin2), CorrelationID3=iff(CorrelationID2==\"\", CorrelationID_5139_CF, CorrelationID2), ObjectType3=iff(ObjectType2==\"\", ObjectClass_5139_CF, ObjectType2)\n| extend CorrelationID=iff(CorrelationID3==\"\", CorrelationID_5141_CF, CorrelationID3), ObjectType=iff(ObjectType3==\"\", ObjectClass_5141_CF, ObjectType3)\n| summarize Changes = count() by TimeCollected, TimeGenerated, CorrelationID, Activity, Administrator, ObjectType, Setting=AttributeLDAPDisplayName_5136_CF, Value, ValueEntered=AttributeValue_CF, ObjectName, OldObject, NewObject, SubTreeDelete, EventData, EventID, SourceSystem, AccountType, EventSourceName, Channel, Task, Level, SubjectDomainName, Type, TenantId \n| project TimeGenerated, CorrelationID, Activity, Administrator, ObjectType, Setting, Value, ValueEntered, ObjectName, OldObject, NewObject, SubTreeDelete, EventData, EventID, SourceSystem, AccountType, EventSourceName, Channel, Task, Level, SubjectDomainName, Type, TenantId, Changes\n| where Administrator != \"SYSTEM\"\n| where Administrator !endswith \"$\"\n"
+                },
+                {
+                  "name": "TimeRange",
+                  "value": "P1D"
+                },
+                {
+                  "name": "Dimensions",
+                  "value": {
+                    "xAxis": {
+                      "name": "TimeGenerated",
+                      "type": "DateTime"
+                    },
+                    "yAxis": [
+                      {
+                        "name": "Changes",
+                        "type": "Int64"
+                      }
+                    ],
+                    "splitBy": [
+                      {
+                        "name": "Administrator",
+                        "type": "String"
+                      }
+                    ],
+                    "aggregation": "Sum"
+                  }
+                },
+                {
+                  "name": "Version",
+                  "value": "1.0"
+                },
+                {
+                  "name": "DashboardId",
+                  "value": 
+                },
+                {
+                  "name": "PartId",
+                  "value": "05e5f243-ccdd-4288-a2a6-30e871c4949d"
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics"
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "aaa-cloud"
+                },
+                {
+                  "name": "resourceTypeMode",
+                  "value": "workspace"
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsChart"
+                },
+                {
+                  "name": "SpecificChart",
+                  "value": "Line"
+                },
+                {
+                  "name": "Scope",
+                  "isOptional": true
+                },
+                {
+                  "name": "DraftRequestParameters",
+                  "isOptional": true
+                },
+                {
+                  "name": "LegendOptions",
+                  "isOptional": true
+                },
+                {
+                  "name": "IsQueryContainTimeRange",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/Microsoft_OperationsManagementSuite_Workspace/PartType/LogsDashboardPart",
+              "settings": {
+                "content": {
+                  "Query": "SecurityEvent\n| where Computer endswith \"aaa.gov\"\n| where EventID == 5136 or EventID == 5137 or EventID == 5138 or EventID == 5139 or EventID == 5141\n| where TimeGenerated > now() - 24h\n| where AccountType != \"Machine\" \n| extend Admin1=iff(SubjectUserName_5138_CF==\"\", SubjectUserName_5139_CF, SubjectUserName_5138_CF), CorrelationID1=iff(CorrelationID_5136_CF==\"\", CorrelationID_5137_CF, CorrelationID_5136_CF), ObjectType1=iff(ObjectClass_5136_CF==\"\", ObjectClass_5137_CF, ObjectClass_5136_CF), Value1=iff(OperationType==\"%%14674\",\"Added\",tostring(OperationType)), SubTreeDelete1=iff(TreeDelete_CF==\"14679.0\",\"No\",tostring(TreeDelete_CF)), ObjectName1=iff(ObjectDN5136_CF==\"\", ObjectDN5137_CF, ObjectDN5136_CF), OldObject=iff(OldObjectDN5138_CF==\"\", OldObjectDN_CF, OldObjectDN5138_CF), NewObject=iff(NewObjectDN5138_CF==\"\", NewObjectDN_CF, NewObjectDN5138_CF) \n| extend Admin2=iff(Admin1==\"\", SubjectUserName_5141_CF, Admin1), CorrelationID2=iff(CorrelationID1==\"\", CorrelationID5138_CF, CorrelationID1), ObjectType2=iff(ObjectType1==\"\", ObjectClass5138_CF, ObjectType1), Value=iff(Value1==\"%%14675\",\"Deleted\", tostring(Value1)), SubTreeDelete=iff(SubTreeDelete1==\"14678.0\",\"Yes\", tostring(SubTreeDelete1)), ObjectName=iff(ObjectName1==\"\", ObjectDN5141_CF, ObjectName1)\n| extend Administrator=iff(Admin2==\"\", SubjectUserName, Admin2), CorrelationID3=iff(CorrelationID2==\"\", CorrelationID_5139_CF, CorrelationID2), ObjectType3=iff(ObjectType2==\"\", ObjectClass_5139_CF, ObjectType2)\n| extend CorrelationID=iff(CorrelationID3==\"\", CorrelationID_5141_CF, CorrelationID3), ObjectType=iff(ObjectType3==\"\", ObjectClass_5141_CF, ObjectType3)\n| summarize Changes = count() by TimeCollected, TimeGenerated, CorrelationID, Activity, Administrator, ObjectType, Setting=AttributeLDAPDisplayName_5136_CF, Value, ValueEntered=AttributeValue_CF, ObjectName, OldObject, NewObject, SubTreeDelete, EventData, EventID, SourceSystem, AccountType, EventSourceName, Channel, Task, Level, SubjectDomainName, Type, TenantId \n| project TimeGenerated, CorrelationID, Activity, Administrator, ObjectType, Setting, Value, ValueEntered, ObjectName, OldObject, NewObject, SubTreeDelete, EventData, EventID, SourceSystem, AccountType, EventSourceName, Channel, Task, Level, SubjectDomainName, Type, TenantId, Changes\n| where Administrator != \"SYSTEM\"\n| where Administrator !endswith \"$\"\n\n",
+                  "PartTitle": "Active Directory Changes ",
+                  "PartSubTitle": "Past 24 Hours",
+                  "LegendOptions": {
+                    "isEnabled": true,
+                    "position": "Bottom"
+                  }
+                }
+              },
+              "asset": {
+                "idInputName": "ComponentId",
+                "type": "ApplicationInsights"
+              }
+            }
+          },
+          "5": {
+            "position": {
+              "x": 15,
+              "y": 1,
+              "colSpan": 13,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "resourceTypeMode",
+                  "isOptional": true
+                },
+                {
+                  "name": "ComponentId",
+                  "isOptional": true
+                },
+                {
+                  "name": "Scope",
+                  "value": {
+                    "resourceIds": [
+                      "
+                  },
+                  "isOptional": true
+                },
+                {
+                  "name": "PartId",
+                  "value": "6a767990-f4ed-4bf7-a859-605ad15820d0",
+                  "isOptional": true
+                },
+                {
+                  "name": "Version",
+                  "value": "2.0",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeRange",
+                  "value": "P30D",
+                  "isOptional": true
+                },
+                {
+                  "name": "DashboardId",
+                  "isOptional": true
+                },
+                {
+                  "name": "DraftRequestParameters",
+                  "isOptional": true
+                },
+                {
+                  "name": "Query",
+                  "value": "let J = SecurityEvent\n| where EventID == 5137\n| where ObjectClass_5137_CF == \"groupPolicyContainer\"\n| summarize Create = count() by SubjectUserName;\nlet O = SecurityEvent\n| where EventID == 5136\n| where AttributeLDAPDisplayName_5136_CF == \"versionNumber\"\n| where ObjectClass_5136_CF == \"groupPolicyContainer\"\n| summarize Edit = count() by SubjectUserName;\nlet N = SecurityEvent\n| where EventID == 5141\n| where ObjectClass_5141_CF == \"groupPolicyContainer\"\n| summarize Delete = count() by SubjectUserName=SubjectUserName_5141_CF;\nlet A = SecurityEvent\n| where EventID == 5136\n| where AttributeLDAPDisplayName_5136_CF == \"nTSecurityDescriptor\"\n| where ObjectClass_5136_CF == \"groupPolicyContainer\"\n| summarize Permission_Ownership = count() by SubjectUserName;\nlet H = SecurityEvent\n| where EventID == 5136\n| where ObjectClass_5136_CF == \"groupPolicyContainer\"\n| where AttributeLDAPDisplayName_5136_CF == \"flags\"\n| summarize Status = count() by Account1=SubjectUserName;\nlet C = J\n| join kind=fullouter\n    O\non SubjectUserName\n| extend Account0 = iff(SubjectUserName==\"\", SubjectUserName1, SubjectUserName);\nlet o = N\n| join kind=fullouter\n    A\non SubjectUserName\n| extend Account0 = iff(SubjectUserName==\"\", SubjectUserName1, SubjectUserName);\nlet h = C\n| join kind=fullouter\n    o\non Account0\n| extend Account1 = iff(Account0==\"\", Account01, Account0);\nlet e = h\n| join kind=fullouter\n    H\non Account1\n| extend Administrator = iff(Account1==\"\", Account11, Account1);\nlet n = e\n| project Administrator, Edit, Delete, Create, Permission_Ownership, Status;\nn\n| sort by Administrator asc\n\n",
+                  "isOptional": true
+                },
+                {
+                  "name": "ControlType",
+                  "value": "FrameControlChart",
+                  "isOptional": true
+                },
+                {
+                  "name": "SpecificChart",
+                  "value": "UnstackedColumn",
+                  "isOptional": true
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics",
+                  "isOptional": true
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "aaa-cloud",
+                  "isOptional": true
+                },
+                {
+                  "name": "Dimensions",
+                  "value": {
+                    "xAxis": {
+                      "name": "Administrator",
+                      "type": "string"
+                    },
+                    "yAxis": [
+                      {
+                        "name": "Create",
+                        "type": "long"
+                      },
+                      {
+                        "name": "Delete",
+                        "type": "long"
+                      },
+                      {
+                        "name": "Edit",
+                        "type": "long"
+                      },
+                      {
+                        "name": "Permission_Ownership",
+                        "type": "long"
+                      },
+                      {
+                        "name": "Status",
+                        "type": "long"
+                      }
+                    ],
+                    "splitBy": [],
+                    "aggregation": "Sum"
+                  },
+                  "isOptional": true
+                },
+                {
+                  "name": "LegendOptions",
+                  "value": {
+                    "isEnabled": true,
+                    "position": "Bottom"
+                  },
+                  "isOptional": true
+                },
+                {
+                  "name": "IsQueryContainTimeRange",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/Microsoft_OperationsManagementSuite_Workspace/PartType/LogsDashboardPart",
+              "settings": {
+                "content": {
+                  "Query": "let J = SecurityEvent\n| where Computer endswith \aaa.gov\"\n| where EventID == 5137\n| where ObjectClass_5137_CF == \"groupPolicyContainer\"\n| summarize Create = count() by SubjectUserName;\nlet O = SecurityEvent\n| where Computer endswith \"aaa.gov\"\n| where EventID == 5136\n| where AttributeLDAPDisplayName_5136_CF == \"versionNumber\"\n| where ObjectClass_5136_CF == \"groupPolicyContainer\"\n| summarize Edit = count() by SubjectUserName;\nlet N = SecurityEvent\n| where Computer endswith \"aaa.gov\"\n| where EventID == 5141\n| where ObjectClass_5141_CF == \"groupPolicyContainer\"\n| summarize Delete = count() by SubjectUserName=SubjectUserName_5141_CF;\nlet A = SecurityEvent\n| where Computer endswith \"aaa.gov\"\n| where EventID == 5136\n| where AttributeLDAPDisplayName_5136_CF == \"nTSecurityDescriptor\"\n| where ObjectClass_5136_CF == \"groupPolicyContainer\"\n| summarize Permission_Ownership = count() by SubjectUserName;\nlet H = SecurityEvent\n| where Computer endswith \"aaa.gov\"\n| where EventID == 5136\n| where ObjectClass_5136_CF == \"groupPolicyContainer\"\n| where AttributeLDAPDisplayName_5136_CF == \"flags\"\n| summarize Status = count() by Account1=SubjectUserName;\nlet C = J\n| join kind=fullouter\n    O\non SubjectUserName\n| extend Account0 = iff(SubjectUserName==\"\", SubjectUserName1, SubjectUserName);\nlet o = N\n| join kind=fullouter\n    A\non SubjectUserName\n| extend Account0 = iff(SubjectUserName==\"\", SubjectUserName1, SubjectUserName);\nlet h = C\n| join kind=fullouter\n    o\non Account0\n| extend Account1 = iff(Account0==\"\", Account01, Account0);\nlet e = h\n| join kind=fullouter\n    H\non Account1\n| extend Administrator = iff(Account1==\"\", Account11, Account1);\nlet n = e\n| project Administrator, Edit, Delete, Create, Permission_Ownership, Status;\nn\n| sort by Administrator asc\n\n",
+                  "PartTitle": "Active Group Policy Administrator Activity Summary (Past 30 days)",
+                  "PartSubTitle": "GMPC"
+                }
+              },
+              "filters": {
+                "MsPortalFx_TimeRange": {
+                  "model": {
+                    "format": "local",
+                    "granularity": "auto",
+                    "relative": "30d"
+                  }
+                }
+              }
+            }
+          },
+          "6": {
+            "position": {
+              "x": 30,
+              "y": 1,
+              "colSpan": 13,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": {
+                  
+                    "ResourceId":
+                  }
+                },
+                {
+                  "name": "Query",
+                  "value": "let J = SecurityEvent\r\n| where EventID == 5137\r\n| where ObjectClass_5137_CF == \"groupPolicyContainer\"\r\n| summarize Create = count() by SubjectUserName;\r\nlet O = SecurityEvent\r\n| where EventID == 5136\r\n| where AttributeLDAPDisplayName_5136_CF == \"versionNumber\"\r\n| where ObjectClass_5136_CF == \"groupPolicyContainer\"\r\n| summarize Edit = count() by SubjectUserName;\r\nlet N = SecurityEvent\r\n| where EventID == 5141\r\n| where ObjectClass_5141_CF == \"groupPolicyContainer\"\r\n| summarize Delete = count() by SubjectUserName=SubjectUserName_5141_CF;\r\nlet A = SecurityEvent\r\n| where EventID == 5136\r\n| where AttributeLDAPDisplayName_5136_CF == \"nTSecurityDescriptor\"\r\n| where ObjectClass_5136_CF == \"groupPolicyContainer\"\r\n| summarize Permission_Ownership = count() by SubjectUserName;\r\nlet H = SecurityEvent\r\n| where EventID == 5136\r\n| where ObjectClass_5136_CF == \"groupPolicyContainer\"\r\n| where AttributeLDAPDisplayName_5136_CF == \"flags\"\r\n| summarize Status = count() by Account1=SubjectUserName;\r\nlet C = J\r\n| join kind=fullouter\r\n    O\r\non SubjectUserName\r\n| extend Account0 = iff(SubjectUserName==\"\", SubjectUserName1, SubjectUserName);\r\nlet o = N\r\n| join kind=fullouter\r\n    A\r\non SubjectUserName\r\n| extend Account0 = iff(SubjectUserName==\"\", SubjectUserName1, SubjectUserName);\r\nlet h = C\r\n| join kind=fullouter\r\n    o\r\non Account0\r\n| extend Account1 = iff(Account0==\"\", Account01, Account0);\r\nlet e = h\r\n| join kind=fullouter\r\n    H\r\non Account1\r\n| extend Account = iff(Account1==\"\", Account11, Account1);\r\nlet n = e\r\n| project Account, Edit, Delete, Create, Permission_Ownership, Status;\r\nn\r\n| sort by Account asc\r\n"
+                },
+                {
+                  "name": "TimeRange",
+                  "value": "P7D"
+                },
+                {
+                  "name": "Version",
+                  "value": "1.0"
+                },
+                {
+                  "name": "DashboardId",
+                  "value": "/
+                },
+                {
+                  "name": "PartId",
+                  "value": "31a8fd1c-fcec-4613-9d0c-e0d269ddc2ff"
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics"
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "aaa-cloud"
+                },
+                {
+                  "name": "resourceTypeMode",
+                  "value": "workspace"
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsGrid"
+                },
+                {
+                  "name": "Dimensions",
+                  "isOptional": true
+                },
+                {
+                  "name": "SpecificChart",
+                  "isOptional": true
+                },
+                {
+                  "name": "Scope",
+                  "isOptional": true
+                },
+                {
+                  "name": "DraftRequestParameters",
+                  "isOptional": true
+                },
+                {
+                  "name": "LegendOptions",
+                  "isOptional": true
+                },
+                {
+                  "name": "IsQueryContainTimeRange",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/Microsoft_OperationsManagementSuite_Workspace/PartType/LogsDashboardPart",
+              "settings": {
+                "content": {
+                  "PartTitle": "Active Group Policy Administrator Activity Summary (Past 30 days)",
+                  "PartSubTitle": "GMPC",
+                  "Query": "let J = SecurityEvent\n| where EventID == 5137\n| where ObjectClass_5137_CF == \"groupPolicyContainer\"\n| summarize Create = count() by SubjectUserName;\nlet O = SecurityEvent\n| where EventID == 5136\n| where AttributeLDAPDisplayName_5136_CF == \"versionNumber\"\n| where ObjectClass_5136_CF == \"groupPolicyContainer\"\n| summarize Edit = count() by SubjectUserName;\nlet N = SecurityEvent\n| where EventID == 5141\n| where ObjectClass_5141_CF == \"groupPolicyContainer\"\n| summarize Delete = count() by SubjectUserName=SubjectUserName_5141_CF;\nlet A = SecurityEvent\n| where EventID == 5136\n| where AttributeLDAPDisplayName_5136_CF == \"nTSecurityDescriptor\"\n| where ObjectClass_5136_CF == \"groupPolicyContainer\"\n| summarize Permission_Ownership = count() by SubjectUserName;\nlet H = SecurityEvent\n| where EventID == 5136\n| where ObjectClass_5136_CF == \"groupPolicyContainer\"\n| where AttributeLDAPDisplayName_5136_CF == \"flags\"\n| summarize Status = count() by Account1=SubjectUserName;\nlet C = J\n| join kind=fullouter\n    O\non SubjectUserName\n| extend Account0 = iff(SubjectUserName==\"\", SubjectUserName1, SubjectUserName);\nlet o = N\n| join kind=fullouter\n    A\non SubjectUserName\n| extend Account0 = iff(SubjectUserName==\"\", SubjectUserName1, SubjectUserName);\nlet h = C\n| join kind=fullouter\n    o\non Account0\n| extend Account1 = iff(Account0==\"\", Account01, Account0);\nlet e = h\n| join kind=fullouter\n    H\non Account1\n| extend Administrator = iff(Account1==\"\", Account11, Account1);\nlet n = e\n| project Administrator, Edit, Delete, Create, Permission_Ownership, Status;\nn\n| sort by Administrator asc\n"
+                }
+              },
+              "asset": {
+                "idInputName": "ComponentId",
+                "type": "ApplicationInsights"
+              },
+              "filters": {
+                "MsPortalFx_TimeRange": {
+                  "model": {
+                    "format": "local",
+                    "granularity": "auto",
+                    "relative": "30d"
+                  }
+                }
+              }
+            }
+          },
+          "7": {
+            "position": {
+              "x": 8,
+              "y": 4,
+              "colSpan": 6,
+              "rowSpan": 3
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": {
+                   
+                    "Name": "aaa-cloud",
+                    "ResourceId": 
+                  }
+                },
+                {
+                  "name": "Query",
+                  "value": "let J = SecurityEvent\n| where EventID == 5136 or EventID == 5137 or EventID == 5141\n| where ObjectClass_5136_CF == \"groupPolicyContainer\" or ObjectClass_5137_CF == \"groupPolicyContainer\" or ObjectClass_5141_CF == \"groupPolicyContainer\"\n| where AttributeLDAPDisplayName_5136_CF == \"versionNumber\" or AttributeLDAPDisplayName_5136_CF == \"nTSecurityDescriptor\" or AttributeLDAPDisplayName_5136_CF == \"flags\" or AttributeLDAPDisplayName_5136_CF == \"\"\n| extend UserAccount=iff(SubjectUserName_5141_CF==\"\", SubjectUserName, SubjectUserName_5141_CF),   GUID1=iff(ObjectDN_CN_CF==\"\", Object_DN_5137_CF, ObjectDN_CN_CF),   CorrelationID1=iff(CorrelationID_5136_CF==\"\", CorrelationID_5137_CF, CorrelationID_5136_CF),   ObjectClass1=iff(ObjectClass_5136_CF==\"\", ObjectClass_5137_CF, ObjectClass_5136_CF), Value1=iff(OperationType==\"%%14674\",\"Added/Enabled\",tostring(OperationType)),  SubTreeDelete1=iff(TreeDelete_CF==\"14679\",\"No\",tostring(TreeDelete_CF))\n| extend GUID2=iff(GUID1==\"\", ObjectDN_5141_CF, GUID1),   CorrelationID=iff(CorrelationID1==\"\", CorrelationID_5141_CF, CorrelationID1),   ObjectClass=iff(ObjectClass1==\"\", ObjectClass_5141_CF, ObjectClass1), Value=iff(Value1==\"%%14675\",\"Deleted/Disabled\", tostring(Value1)), SubTreeDelete=iff(SubTreeDelete1==\"14678.0\",\"Yes\", tostring(SubTreeDelete1))\n| extend GUID=trim(@\"[^\\w]+\",tolower(GUID2));\nlet A = GPONames_CL \n| where GPO_GUID_CF != \"\"\n| where GPOName_CF != \"\"\n| summarize by GUID=GPO_GUID_CF, GPOName_CF;\nlet C = A | join kind=fullouter J on GUID\n| extend Name1 = iff(GUID1!=\"\", GPOName_CF, GUID1);\nC\n| extend ChangeType1=iff(AttributeLDAPDisplayName_5136_CF==\"versionNumber\",\"Edit\", tostring(AttributeLDAPDisplayName_5136_CF)) \n| extend ChangeType2=iff(ChangeType1==\"nTSecurityDescriptor\",\"Permission/Ownership\", tostring(ChangeType1))\n| extend ChangeType3=iff(ChangeType2==\"flags\",\"Status\", tostring(ChangeType2))\n| extend ChangeType4=iff(EventID==\"5137\",\"Create\",tostring(ChangeType3))\n| extend ChangeType5=iff(EventID==\"5139\",\"Move\",tostring(ChangeType4))\n| extend ChangeType=iff(EventID==\"5141\",\"Delete\",tostring(ChangeType5))\n| where UserAccount != \"\"\n| summarize Changes = count() by TimeCollected, LogTimestamp=TimeGenerated, UserAccount, Name=iff(Name1!=\"\", tostring(GPOName_CF), \"***New GPO - Name Not Resolved Yet***\"), GUID=strcat(\"{\",tostring(toupper(GUID3)),\"}\"), CorrelationID, Value, Version=iff(ChangeType==\"Edit\", tostring(AttributeValue_CF), \"\"), SubTreeDelete, ChangeType, Activity, Computer, EventData, EventID, ObjectClass, SourceSystem, AccountType, EventSourceName, Channel, Task, Level, SubjectDomainName, Type, TenantId\n| project TimeCollected, LogTimestamp, UserAccount, Name, GUID, CorrelationID, Value, Version, SubTreeDelete, ChangeType, Activity, Computer, EventData, EventID, ObjectClass, SourceSystem, AccountType, EventSourceName, Channel, Task, Level, SubjectDomainName, Type, TenantId, Changes\n| sort by LogTimestamp\n"
+                },
+                {
+                  "name": "TimeRange",
+                  "value": "P1D"
+                },
+                {
+                  "name": "Dimensions",
+                  "value": {
+                    "xAxis": {
+                      "name": "TimeCollected",
+                      "type": "DateTime"
+                    },
+                    "yAxis": [
+                      {
+                        "name": "Changes",
+                        "type": "Int64"
+                      }
+                    ],
+                    "splitBy": [
+                      {
+                        "name": "UserAccount",
+                        "type": "String"
+                      }
+                    ],
+                    "aggregation": "Sum"
+                  }
+                },
+                {
+                  "name": "Version",
+                  "value": "1.0"
+                },
+                {
+                  "name": "DashboardId",
+                  "value": 
+                },
+                {
+                  "name": "PartId",
+                  "value": "dc6e475c-1f41-4924-91ae-6fb31ce7e9de"
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics"
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "aaa-cloud"
+                },
+                {
+                  "name": "resourceTypeMode",
+                  "value": "workspace"
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsChart"
+                },
+                {
+                  "name": "SpecificChart",
+                  "value": "GroupedBar"
+                },
+                {
+                  "name": "Scope",
+                  "isOptional": true
+                },
+                {
+                  "name": "DraftRequestParameters",
+                  "isOptional": true
+                },
+                {
+                  "name": "LegendOptions",
+                  "isOptional": true
+                },
+                {
+                  "name": "IsQueryContainTimeRange",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/Microsoft_OperationsManagementSuite_Workspace/PartType/LogsDashboardPart",
+              "settings": {
+                "content": {
+                  "Query": "let J = SecurityEvent\n| where Computer endswith \"aaa.gov\"\n| where EventID == 5136 or EventID == 5137 or EventID == 5141\n| where ObjectClass_5136_CF == \"groupPolicyContainer\" or ObjectClass_5137_CF == \"groupPolicyContainer\" or ObjectClass_5141_CF == \"groupPolicyContainer\"\n| where AttributeLDAPDisplayName_5136_CF == \"versionNumber\" or AttributeLDAPDisplayName_5136_CF == \"nTSecurityDescriptor\" or AttributeLDAPDisplayName_5136_CF == \"flags\" or AttributeLDAPDisplayName_5136_CF == \"\"\n| extend UserAccount=iff(SubjectUserName_5141_CF==\"\", SubjectUserName, SubjectUserName_5141_CF),   GUID1=iff(ObjectDN_CN_CF==\"\", Object_DN_5137_CF, ObjectDN_CN_CF),   CorrelationID1=iff(CorrelationID_5136_CF==\"\", CorrelationID_5137_CF, CorrelationID_5136_CF),   ObjectClass1=iff(ObjectClass_5136_CF==\"\", ObjectClass_5137_CF, ObjectClass_5136_CF), Value1=iff(OperationType==\"%%14674\",\"Added/Enabled\",tostring(OperationType)),  SubTreeDelete1=iff(TreeDelete_CF==\"14679\",\"No\",tostring(TreeDelete_CF))\n| extend GUID2=iff(GUID1==\"\", ObjectDN_5141_CF, GUID1),   CorrelationID=iff(CorrelationID1==\"\", CorrelationID_5141_CF, CorrelationID1),   ObjectClass=iff(ObjectClass1==\"\", ObjectClass_5141_CF, ObjectClass1), Value=iff(Value1==\"%%14675\",\"Deleted/Disabled\", tostring(Value1)), SubTreeDelete=iff(SubTreeDelete1==\"14678.0\",\"Yes\", tostring(SubTreeDelete1))\n| extend GUID=trim(@\"[^\\w]+\",tolower(GUID2));\nlet A = GPONames_CL \n| where GPO_GUID_CF != \"\"\n| where GPOName_CF != \"\"\n| summarize by GUID=GPO_GUID_CF, GPOName_CF;\nlet C = A | join kind=fullouter J on GUID\n| extend Name1 = iff(GUID1!=\"\", GPOName_CF, GUID1);\nC\n| extend ChangeType1=iff(AttributeLDAPDisplayName_5136_CF==\"versionNumber\",\"Edit\", tostring(AttributeLDAPDisplayName_5136_CF)) \n| extend ChangeType2=iff(ChangeType1==\"nTSecurityDescriptor\",\"Permission/Ownership\", tostring(ChangeType1))\n| extend ChangeType3=iff(ChangeType2==\"flags\",\"Status\", tostring(ChangeType2))\n| extend ChangeType4=iff(EventID==\"5137\",\"Create\",tostring(ChangeType3))\n| extend ChangeType5=iff(EventID==\"5139\",\"Move\",tostring(ChangeType4))\n| extend ChangeType=iff(EventID==\"5141\",\"Delete\",tostring(ChangeType5))\n| where UserAccount != \"\"\n| summarize Changes = count() by TimeCollected, LogTimestamp=TimeGenerated, UserAccount, Name=iff(Name1!=\"\", tostring(GPOName_CF), \"***New GPO - Name Not Resolved Yet***\"), GUID=strcat(\"{\",tostring(toupper(GUID3)),\"}\"), CorrelationID, Value, Version=iff(ChangeType==\"Edit\", tostring(AttributeValue_CF), \"\"), SubTreeDelete, ChangeType, Activity, Computer, EventData, EventID, ObjectClass, SourceSystem, AccountType, EventSourceName, Channel, Task, Level, SubjectDomainName, Type, TenantId\n| project TimeCollected, LogTimestamp, UserAccount, Name, GUID, CorrelationID, Value, Version, SubTreeDelete, ChangeType, Activity, Computer, EventData, EventID, ObjectClass, SourceSystem, AccountType, EventSourceName, Channel, Task, Level, SubjectDomainName, Type, TenantId, Changes\n| sort by LogTimestamp\n| render timechart\n\n",
+                  "SpecificChart": "UnstackedColumn",
+                  "PartTitle": "Group Policy audit logs (Past 7 days)",
+                  "PartSubTitle": "GPMC",
+                  "Dimensions": {
+                    "xAxis": {
+                      "name": "TimeCollected",
+                      "type": "datetime"
+                    },
+                    "yAxis": [
+                      {
+                        "name": "EventID",
+                        "type": "int"
+                      }
+                    ],
+                    "splitBy": [
+                      {
+                        "name": "UserAccount",
+                        "type": "string"
+                      }
+                    ],
+                    "aggregation": "Sum"
+                  },
+                  "LegendOptions": {
+                    "isEnabled": true,
+                    "position": "Bottom"
+                  }
+                }
+              },
+              "asset": {
+                "idInputName": "ComponentId",
+                "type": "ApplicationInsights"
+              },
+              "filters": {
+                "MsPortalFx_TimeRange": {
+                  "model": {
+                    "format": "local",
+                    "granularity": "auto",
+                    "relative": "7d"
+                  }
+                }
+              }
+            }
+          },
+          "8": {
+            "position": {
+              "x": 15,
+              "y": 5,
+              "colSpan": 13,
+              "rowSpan": 6
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": {
+                    
+                    "Name": "aaa-cloud"
+                  }
+                },
+                {
+                  "name": "Query",
+                  "value": "let GPO_Create = SecurityEvent | where EventID == 5137 | where ObjectClass_5137_CF == \"groupPolicyContainer\" | summarize GPO_Create = count() by Object_DN_5137_CF, SubjectUserName; \r\nlet GPO_Edit = SecurityEvent | where EventID == 5136 | where AttributeLDAPDisplayName_5136_CF == \"versionNumber\" | where ObjectClass_5136_CF == \"groupPolicyContainer\" | summarize GPO_Edit = count() by ObjectDN_CN_CF, SubjectUserName; \r\nlet GPO_Delete = SecurityEvent | where EventID == 5141 | where ObjectClass_5141_CF == \"groupPolicyContainer\" | summarize GPO_Delete = count() by ObjectDN_5141_CF, SubjectUserName_5141_CF; \r\nlet GPO_Permission = SecurityEvent | where EventID == 5136 | where AttributeLDAPDisplayName_5136_CF == \"nTSecurityDescriptor\" | where ObjectClass_5136_CF == \"groupPolicyContainer\" | summarize GPO_Permission_Ownership = count() by ObjectDN_CN_CF, SubjectUserName; \r\nlet GPO_Status = SecurityEvent | where EventID == 5136 | where ObjectClass_5136_CF == \"groupPolicyContainer\" | where AttributeLDAPDisplayName_5136_CF == \"flags\"| summarize GPO_Status = count() by ObjectDN_CN_CF, SubjectUserName;\r\nlet f = GPONames_CL | summarize GPONames = count() by GPO_GUID_CF, GPOName_CF;\r\nlet a = GPO_Create; \r\nlet b = GPO_Edit;\r\nlet c = GPO_Delete;\r\nlet d = GPO_Permission;\r\nlet e = GPO_Status; \r\nlet x = (a | project GUID=Object_DN_5137_CF, SubjectUserName, GPO_Create) | join kind=fullouter (b | project GUID=ObjectDN_CN_CF, SubjectUserName, GPO_Edit) on GUID| extend GUID0 = iff(GUID==dynamic(null), GUID1, GUID) | extend SubjectUserName0 = iff(SubjectUserName==dynamic(null), SubjectUserName1, SubjectUserName);\r\nlet y = (c | project GUID=ObjectDN_5141_CF, SubjectUserName=SubjectUserName_5141_CF, GPO_Delete) | join kind=fullouter (d | project GUID=ObjectDN_CN_CF, SubjectUserName, GPO_Permission_Ownership) on GUID | extend GUID0 = iff(GUID==dynamic(null), GUID1, GUID) | extend SubjectUserName0 = iff(SubjectUserName==dynamic(null), SubjectUserName1, SubjectUserName);\r\nlet z = x | join kind=fullouter y on GUID0 | extend GUID1 = iff(GUID0==dynamic(null), GUID01, GUID0) | extend SubjectUserName1 = iff(SubjectUserName0==dynamic(null), SubjectUserName01, SubjectUserName0);\r\nlet q = (e | project GUID=ObjectDN_CN_CF, SubjectUserName, GPO_Status) | extend GUID1 = iff(GUID==dynamic(null), GUID, GUID) | extend SubjectUserName1 = iff(SubjectUserName==dynamic(null), SubjectUserName, SubjectUserName);\r\nlet r = z | join kind=fullouter q on GUID1 | extend GUID2 = iff(GUID1==dynamic(null), GUID11, GUID1) | extend Account = iff(SubjectUserName1==dynamic(null), SubjectUserName11, SubjectUserName1)\r\n| project tolower(GUID2), Account, GPO_Edit, GPO_Delete, GPO_Create, GPO_Permission_Ownership, GPO_Status | extend trim1 = trim(\"}\",Column1) | extend GUID = trim(\"{\",trim1)\r\n| project GUID, Account, GPO_Edit, GPO_Delete, GPO_Create, GPO_Permission_Ownership, GPO_Status;\r\nlet s = (f | where GPO_GUID_CF != \"\" | where GPOName_CF != \"\" | project GUID=GPO_GUID_CF, GPOName_CF) | join kind=fullouter r on GUID | extend Name = iff(GUID1!=dynamic(null), GPOName_CF, GUID1);\r\ns | where Name != \"\" | project Name, Account, GUID=GUID1, GPO_Edit, GPO_Delete, GPO_Create, GPO_Permission_Ownership, GPO_Status | sort by Name asc\n"
+                },
+                {
+                  "name": "TimeRange",
+                  "value": "P7D"
+                },
+                {
+                  "name": "Version",
+                  "value": "1.0"
+                },
+                {
+                  "name": "DashboardId",
+                  "value": "
+                },
+                {
+                  "name": "PartId",
+                  "value": "967118f7-2b26-497d-b78b-38d51c49d6b8"
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics"
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "aaa-cloud"
+                },
+                {
+                  "name": "resourceTypeMode",
+                  "value": "workspace"
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsGrid"
+                },
+                {
+                  "name": "Dimensions",
+                  "isOptional": true
+                },
+                {
+                  "name": "SpecificChart",
+                  "isOptional": true
+                },
+                {
+                  "name": "Scope",
+                  "isOptional": true
+                },
+                {
+                  "name": "DraftRequestParameters",
+                  "isOptional": true
+                },
+                {
+                  "name": "LegendOptions",
+                  "isOptional": true
+                },
+                {
+                  "name": "IsQueryContainTimeRange",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/Microsoft_OperationsManagementSuite_Workspace/PartType/LogsDashboardPart",
+              "settings": {
+                "content": {
+                  "GridColumnsWidth": {
+                    "Name": "343px",
+                    "GUID": "298px",
+                    "Edit": "70px",
+                    "Delete": "70px",
+                    "Create": "79px",
+                    "Permission_Ownership": "106px"
+                  },
+                  "Query": "let J = SecurityEvent | where Computer endswith \"aaa.gov\" | where EventID == 5137 | where ObjectClass_5137_CF == \"groupPolicyContainer\" | summarize Create = count() by GUID=Object_DN_5137_CF, SubjectUserName; \nlet O = SecurityEvent | where Computer endswith \"aaa.gov\" | where EventID == 5136 | where AttributeLDAPDisplayName_5136_CF == \"versionNumber\" | where ObjectClass_5136_CF == \"groupPolicyContainer\" | summarize Edit = count() by GUID=ObjectDN_CN_CF, SubjectUserName; \nlet N = SecurityEvent | where Computer endswith \"aaa.gov\" | where EventID == 5141 | where ObjectClass_5141_CF == \"groupPolicyContainer\" | summarize Delete = count() by GUID=ObjectDN_5141_CF, SubjectUserName=SubjectUserName_5141_CF; \nlet A = SecurityEvent | where Computer endswith \"aaa.gov\" | where EventID == 5136 | where AttributeLDAPDisplayName_5136_CF == \"nTSecurityDescriptor\" | where ObjectClass_5136_CF == \"groupPolicyContainer\" | summarize Permission_Ownership = count() by GUID=ObjectDN_CN_CF, SubjectUserName; \nlet H = SecurityEvent | where Computer endswith \"aaa.gov\" | where EventID == 5136 | where ObjectClass_5136_CF == \"groupPolicyContainer\" | where AttributeLDAPDisplayName_5136_CF == \"flags\" | summarize Status = count() by GUID1=ObjectDN_CN_CF, SubjectUserName1=SubjectUserName;\nlet a = GPONames_CL | where GPO_GUID_CF != \"\" | where GPOName_CF != \"\" | summarize GPONames = count() by GUID3=GPO_GUID_CF, GPOName_CF;\nlet C = J | join kind=fullouter O on GUID, SubjectUserName | extend GUID0 = iff(GUID==\"\", GUID1, GUID) | extend SubjectUserName0 = iff(SubjectUserName==\"\", SubjectUserName1, SubjectUserName);\nlet o = N | join kind=fullouter A on GUID, SubjectUserName | extend GUID0 = iff(GUID==\"\", GUID1, GUID) | extend SubjectUserName0 = iff(SubjectUserName==\"\", SubjectUserName1, SubjectUserName);\nlet h = C | join kind=fullouter o on GUID0, SubjectUserName0 | extend GUID1 = iff(GUID0==\"\", GUID01, GUID0) | extend SubjectUserName1 = iff(SubjectUserName0==\"\", SubjectUserName01, SubjectUserName0);\nlet e = h | join kind=fullouter H on GUID1, SubjectUserName1 | extend GUID2 = iff(GUID1==\"\", GUID12, GUID1) | extend Account = iff(SubjectUserName1==\"\", SubjectUserName12, SubjectUserName1)\n| extend GUID3 = trim(@\"[^\\w]+\",tolower(GUID2));\nlet n = a | join kind=fullouter e on GUID3 | extend Name1 = iff(GUID31!=\"\", GPOName_CF, GUID31);\nn | where Account != \"\" | project Administrator=Account, Name= iff(Name1!=\"\", tostring(GPOName_CF), \"***New GPO - Name Not Resolved Yet***\"), GUID=strcat(\"{\",tostring(toupper(GUID31)),\"}\"), Edit, Delete, Create, Permission_Ownership, Status | sort by Administrator asc\n",
+                  "PartTitle": "Group Policy changes (Past 30 days)",
+                  "PartSubTitle": "GPMC"
+                }
+              },
+              "asset": {
+                "idInputName": "ComponentId",
+                "type": "ApplicationInsights"
+              },
+              "filters": {
+                "MsPortalFx_TimeRange": {
+                  "model": {
+                    "format": "local",
+                    "granularity": "auto",
+                    "relative": "30d"
+                  }
+                }
+              }
+            }
+          },
+          "9": {
+            "position": {
+              "x": 0,
+              "y": 7,
+              "colSpan": 14,
+              "rowSpan": 1
+            },
+            "metadata": {
+              "inputs": [],
+              "type": "Extension/HubsExtension/PartType/MarkdownPart",
+              "settings": {
+                "content": {
+                  "settings": {
+                    "content": "<div style=\"font-size:300%;\">Users, Groups, Computers, OUs</div>",
+                    "title": "",
+                    "subtitle": "",
+                    "markdownUri": null
+                  }
+                }
+              }
+            }
+          },
+          "10": {
+            "position": {
+              "x": 0,
+              "y": 8,
+              "colSpan": 7,
+              "rowSpan": 3
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": {
+                    "
+                  }
+                },
+                {
+                  "name": "Query",
+                  "value": "SecurityEvent\r\n| where EventID == 5136 \r\n| where ObjectClass_5136_CF == \"group\"\r\n| where AttributeLDAPDisplayName_5136_CF ==\"member\"\r\n| extend Operation1=iff(OperationType==\"%%14674\",\"Added\",tostring(OperationType))\r\n| extend Operation=iff(Operation1==\"%%14675\",\"Deleted\", tostring(Operation1))\r\n| project Operation, Member=AttributeValue_CF, Group=ObjectDN5136_CF, Administrator=SubjectUserName, CorrelationID=CorrelationID_5136_CF\n"
+                },
+                {
+                  "name": "TimeRange",
+                  "value": "P1D"
+                },
+                {
+                  "name": "Version",
+                  "value": "1.0"
+                },
+                {
+                  "name": "DashboardId",
+                  "valu
+                },
+                {
+                  "name": "PartId",
+                  "value": "559f1d34-20c3-4a63-b8f9-1c873fbeaaff"
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics"
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "aaa-cloud"
+                },
+                {
+                  "name": "resourceTypeMode",
+                  "value": "workspace"
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsGrid"
+                },
+                {
+                  "name": "Dimensions",
+                  "isOptional": true
+                },
+                {
+                  "name": "SpecificChart",
+                  "isOptional": true
+                },
+                {
+                  "name": "Scope",
+                  "isOptional": true
+                },
+                {
+                  "name": "DraftRequestParameters",
+                  "isOptional": true
+                },
+                {
+                  "name": "LegendOptions",
+                  "isOptional": true
+                },
+                {
+                  "name": "IsQueryContainTimeRange",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/Microsoft_OperationsManagementSuite_Workspace/PartType/LogsDashboardPart",
+              "settings": {
+                "content": {
+                  "GridColumnsWidth": {
+                    "Operation": "119px",
+                    "Member": "171px",
+                    "Group": "222px"
+                  },
+                  "Query": "SecurityEvent\n| where Computer endswith \"aaa.gov\"\n| where EventID == 5136 \n| where ObjectClass_5136_CF == \"group\"\n| where AttributeLDAPDisplayName_5136_CF ==\"member\"\n| extend Operation1=iff(OperationType==\"%%14674\",\"Added Member\",tostring(OperationType))\n| extend Operation=iff(Operation1==\"%%14675\",\"Removed Member\", tostring(Operation1))\n| project Operation, Member=AttributeValue_CF, Group=ObjectDN5136_CF, Administrator=SubjectUserName, TimeGenerated, CorrelationID=CorrelationID_5136_CF\n",
+                  "PartTitle": "Group membership",
+                  "PartSubTitle": "Active Directory"
+                }
+              },
+              "asset": {
+                "idInputName": "ComponentId",
+                "type": "ApplicationInsights"
+              }
+            }
+          },
+          "11": {
+            "position": {
+              "x": 7,
+              "y": 8,
+              "colSpan": 7,
+              "rowSpan": 3
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": {
+               
+                  }
+                },
+                {
+                  "name": "Query",
+                  "value": "SecurityEvent \r\n| where EventID == 5139\r\n| where ObjectClass_5139_CF == \"user\" or ObjectClass_5139_CF == \"computer\" or ObjectClass_5139_CF == \"group\"\r\n| summarize count() by OldLocation=OldObjectDN_CF, NewLocation=NewObjectDN_CF, Administrator=SubjectUserName_5139_CF, ObjectType=ObjectClass_5139_CF   \r\n| project Administrator, ObjectType, OldLocation, NewLocation\r\n| sort by Administrator\n"
+                },
+                {
+                  "name": "TimeRange",
+                  "value": "P7D"
+                },
+                {
+                  "name": "Version",
+                  "value": "1.0"
+                },
+                {
+                  "name": "DashboardId",
+                  "value": "
+                },
+                {
+                  "name": "PartId",
+                  "value": "042b24e7-b817-44b0-9b97-198e2193e2fd"
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics"
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "aaa-cloud"
+                },
+                {
+                  "name": "resourceTypeMode",
+                  "value": "workspace"
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsGrid"
+                },
+                {
+                  "name": "Dimensions",
+                  "isOptional": true
+                },
+                {
+                  "name": "SpecificChart",
+                  "isOptional": true
+                },
+                {
+                  "name": "Scope",
+                  "isOptional": true
+                },
+                {
+                  "name": "DraftRequestParameters",
+                  "isOptional": true
+                },
+                {
+                  "name": "LegendOptions",
+                  "isOptional": true
+                },
+                {
+                  "name": "IsQueryContainTimeRange",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/Microsoft_OperationsManagementSuite_Workspace/PartType/LogsDashboardPart",
+              "settings": {
+                "content": {
+                  "GridColumnsWidth": {
+                    "OldLocation": "223px",
+                    "NewLocation": "234px"
+                  },
+                  "Query": "SecurityEvent \n| where Computer endswith \"aaa.gov\"\n| where EventID == 5139\n| where ObjectClass_5139_CF == \"user\" or ObjectClass_5139_CF == \"computer\" or ObjectClass_5139_CF == \"group\" or ObjectClass_5139_CF == \"organizationalUnit\"\n| summarize count() by OldLocation=OldObjectDN_CF, NewLocation=NewObjectDN_CF, Administrator=SubjectUserName_5139_CF, ObjectType=ObjectClass_5139_CF, CorrelationID=CorrelationID_5139_CF, TimeGenerated   \n| project OldLocation, NewLocation, ObjectType , Administrator, TimeGenerated, CorrelationID\n| sort by Administrator\n",
+                  "PartTitle": "Relocated objects",
+                  "PartSubTitle": "Active Directory"
+                }
+              },
+              "asset": {
+                "idInputName": "ComponentId",
+                "type": "ApplicationInsights"
+              }
+            }
+          },
+          "12": {
+            "position": {
+              "x": 0,
+              "y": 11,
+              "colSpan": 7,
+              "rowSpan": 3
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "valu
+                    "Name": "aaa-cloud",
+                    "ResourceId": "
+                  }
+                },
+                {
+                  "name": "Query",
+                  "value": "SecurityEvent \r\n| where EventID == 5141\r\n| where ObjectClass_5141_CF != \"groupPolicyContainer\"  \r\n| extend SubTreeDelete1=iff(TreeDelete_CF==\"14679.0\",\"No\",tostring(TreeDelete_CF))\r\n| extend SubTreeDelete=iff(SubTreeDelete1==\"14678.0\",\"Yes\", tostring(SubTreeDelete1))\r\n| summarize count() by ObjectName=ObjectDN5141_CF, Administrator=SubjectUserName_5141_CF, ObjectType=ObjectClass_5141_CF   \r\n| project Administrator, ObjectType, ObjectName\r\n| sort by ObjectName"
+                },
+                {
+                  "name": "TimeRange",
+                  "value": "P1D"
+                },
+                {
+                  "name": "Version",
+                  "value": "1.0"
+                },
+                {
+                  "name": "DashboardId",
+                  "value": 
+                },
+                {
+                  "name": "PartId",
+                  "value": "ac35b3a3-9c5a-487e-a195-4f1e083695dd"
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics"
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "aaa-cloud"
+                },
+                {
+                  "name": "resourceTypeMode",
+                  "value": "workspace"
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsGrid"
+                },
+                {
+                  "name": "Dimensions",
+                  "isOptional": true
+                },
+                {
+                  "name": "SpecificChart",
+                  "isOptional": true
+                },
+                {
+                  "name": "Scope",
+                  "isOptional": true
+                },
+                {
+                  "name": "DraftRequestParameters",
+                  "isOptional": true
+                },
+                {
+                  "name": "LegendOptions",
+                  "isOptional": true
+                },
+                {
+                  "name": "IsQueryContainTimeRange",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/Microsoft_OperationsManagementSuite_Workspace/PartType/LogsDashboardPart",
+              "settings": {
+                "content": {
+                  "GridColumnsWidth": {
+                    "ObjectType": "106px",
+                    "ObjectName": "308px"
+                  },
+                  "Query": "SecurityEvent \n| where Computer endswith \"aaa.gov\"\n| where EventID == 5141\n| where ObjectClass_5141_CF == \"user\" or ObjectClass_5141_CF == \"computer\" or ObjectClass_5141_CF == \"group\"or ObjectClass_5141_CF == \"organizationalUnit\"\n| where SubjectUserName_5141_CF !endswith \"$\"\n| where SubjectUserName_5141_CF != \"SYSTEM\"  \n| summarize count() by ObjectName=ObjectDN5141_CF, Administrator=SubjectUserName_5141_CF, ObjectType=ObjectClass_5141_CF, CorrelationID=CorrelationID_5141_CF, TimeGenerated   \n| project ObjectName, ObjectType, Administrator, TimeGenerated, CorrelationID \n| sort by ObjectName\n",
+                  "PartTitle": "Deleted objects",
+                  "PartSubTitle": "Active Directory"
+                }
+              },
+              "asset": {
+                "idInputName": "ComponentId",
+                "type": "ApplicationInsights"
+              }
+            }
+          },
+          "13": {
+            "position": {
+              "x": 7,
+              "y": 11,
+              "colSpan": 7,
+              "rowSpan": 3
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": {
+                   
+                  }
+                },
+                {
+                  "name": "Query",
+                  "value": "SecurityEvent \r\n| where EventID == 5137\r\n| where AccountType != \"Machine\" \r\n| where ObjectClass_5137_CF == \"user\" or ObjectClass_5137_CF == \"computer\" or ObjectClass_5137_CF == \"group\"\r\n| summarize count() by ObjectName=ObjectDN5137_CF, Administrator=SubjectUserName_5137_CF, ObjectType=ObjectClass_5137_CF   \r\n| project Administrator, ObjectType, ObjectName\r\n| sort by ObjectName\n"
+                },
+                {
+                  "name": "TimeRange",
+                  "value": "P1D"
+                },
+                {
+                  "name": "Version",
+                  "value": "1.0"
+                },
+                {
+                  "name": "DashboardId",
+                  "value": "..."
+                },
+                {
+                  "name": "PartId",
+                  "value": "f325b924-eeb5-4913-a70f-3ae5d6716d82"
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics"
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "aaa-cloud"
+                },
+                {
+                  "name": "resourceTypeMode",
+                  "value": "workspace"
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsGrid"
+                },
+                {
+                  "name": "Dimensions",
+                  "isOptional": true
+                },
+                {
+                  "name": "SpecificChart",
+                  "isOptional": true
+                },
+                {
+                  "name": "Scope",
+                  "isOptional": true
+                },
+                {
+                  "name": "DraftRequestParameters",
+                  "isOptional": true
+                },
+                {
+                  "name": "LegendOptions",
+                  "isOptional": true
+                },
+                {
+                  "name": "IsQueryContainTimeRange",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/Microsoft_OperationsManagementSuite_Workspace/PartType/LogsDashboardPart",
+              "settings": {
+                "content": {
+                  "GridColumnsWidth": {
+                    "ObjectType": "103px",
+                    "ObjectName": "315px"
+                  },
+                  "Query": "SecurityEvent \n| where Computer endswith \"aaa.gov\"\n| where EventID == 5137\n//| where AccountType != \"Machine\" \n| where ObjectClass_5137_CF == \"user\" or ObjectClass_5137_CF == \"computer\" or ObjectClass_5137_CF == \"group\" or ObjectClass_5137_CF == \"organizationalUnit\"\n| summarize count() by ObjectName=ObjectDN5137_CF, Administrator=SubjectUserName_5137_CF, ObjectType=ObjectClass_5137_CF, CorrelationID=CorrelationID_5137_CF, TimeGenerated\n| project ObjectName, ObjectType, Administrator, TimeGenerated, CorrelationID \n| sort by ObjectName\n\n",
+                  "PartTitle": "New objects",
+                  "PartSubTitle": "Active Directory"
+                }
+              },
+              "asset": {
+                "idInputName": "ComponentId",
+                "type": "ApplicationInsights"
+              }
+            }
+          },
+          "14": {
+            "position": {
+              "x": 15,
+              "y": 11,
+              "colSpan": 13,
+              "rowSpan": 2
+            },
+            "metadata": {
+              "inputs": [],
+              "type": "Extension/HubsExtension/PartType/MarkdownPart",
+              "settings": {
+                "content": {
+                  "settings": {
+                    "content": "<div style=\"font-size:300%;\">GPO Backups</div>\n\n<div style=\"font-size:150%;\">The saemanshare01 storage account contains full daily backups of Group Policy for the past year. The ... runs the backup script.",
+                    "title": "",
+                    "subtitle": "",
+                    "markdownUri": null
+                  }
+                }
+              }
+            }
+          },
+          "15": {
+            "position": {
+              "x": 15,
+              "y": 13,
+              "colSpan": 4,
+              "rowSpan": 2
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "id",
+                  "value": "..."
+                },
+                {
+                  "name": "menuid",
+                  "isOptional": true
+                },
+                {
+                  "name": "referrerInfo",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/HubsExtension/PartType/ResourcePart",
+              "asset": {
+                "idInputName": "id"
+              },
+              "defaultMenuItemId": "storageexplorer"
+            }
+          },
+          "16": {
+            "position": {
+              "x": 19,
+              "y": 13,
+              "colSpan": 2,
+              "rowSpan": 2
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "id",
+                  "value": "
+                }
+              ],
+              "type": "Extension/HubsExtension/PartType/ResourcePart",
+              "asset": {
+                "idInputName": "id",
+                "type": "VirtualMachine"
+              },
+              "defaultMenuItemId": "overview"
+            }
+          },
+          "17": {
+            "position": {
+              "x": 0,
+              "y": 14,
+              "colSpan": 7,
+              "rowSpan": 3
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": {
+                    "Subscrip
+                  }
+                },
+                {
+                  "name": "Query",
+                  "value": "SecurityEvent \r\n| where EventID == 5136\r\n| where AccountType != \"Machine\" \r\n| where ObjectClass_5136_CF == \"user\" or ObjectClass_5136_CF == \"computer\" or ObjectClass_5136_CF == \"group\"\r\n| extend Value1=iff(OperationType==\"%%14674\",\"Added\",tostring(OperationType))\r\n| extend Value=iff(Value1==\"%%14675\",\"Deleted\", tostring(Value1))\r\n| where Value == \"Added\"\r\n| summarize count() by ObjectLocation=ObjectDN5136_CF, Administrator=SubjectUserName, ObjectType=ObjectClass_5136_CF, Setting=AttributeLDAPDisplayName_5136_CF, ValueEntered=AttributeValue_CF\r\n| project ObjectLocation, ObjectType, Setting, ValueEntered, Administrator\r\n| sort by ObjectLocation \n"
+                },
+                {
+                  "name": "TimeRange",
+                  "value": "P7D"
+                },
+                {
+                  "name": "Version",
+                  "value": "1.0"
+                },
+                {
+                  "name": "DashboardId",
+                  "value": "/
+                },
+                {
+                  "name": "PartId",
+                  "value": "fb21eeb4-2e6a-4f38-93fc-d37dd8b0a4b4"
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics"
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "aaa-cloud"
+                },
+                {
+                  "name": "resourceTypeMode",
+                  "value": "workspace"
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsGrid"
+                },
+                {
+                  "name": "Dimensions",
+                  "isOptional": true
+                },
+                {
+                  "name": "SpecificChart",
+                  "isOptional": true
+                },
+                {
+                  "name": "Scope",
+                  "isOptional": true
+                },
+                {
+                  "name": "DraftRequestParameters",
+                  "isOptional": true
+                },
+                {
+                  "name": "LegendOptions",
+                  "isOptional": true
+                },
+                {
+                  "name": "IsQueryContainTimeRange",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/Microsoft_OperationsManagementSuite_Workspace/PartType/LogsDashboardPart",
+              "settings": {
+                "content": {
+                  "GridColumnsWidth": {
+                    "Location": "207px"
+                  },
+                  "Query": "SecurityEvent \n| where Computer endswith \"aaa.gov\"\n| where EventID == 5136\n| where AccountType != \"Machine\" \n| where ObjectClass_5136_CF == \"user\" or ObjectClass_5136_CF == \"computer\" or ObjectClass_5136_CF == \"group\" or ObjectClass_5136_CF == \"organizationalUnit\"\n| extend Value1=iff(OperationType==\"%%14674\",\"Added\",tostring(OperationType))\n| extend Value=iff(Value1==\"%%14675\",\"Deleted\", tostring(Value1))\n| where Value == \"Added\"\n| summarize count() by Location=ObjectDN5136_CF, Administrator=SubjectUserName, ObjectType=ObjectClass_5136_CF, Setting=AttributeLDAPDisplayName_5136_CF, ValueEntered=AttributeValue_CF, CorrelationID=CorrelationID_5136_CF, TimeGenerated\n| project ValueEntered, Setting, Location, ObjectType, Administrator,TimeGenerated, CorrelationID\n| sort by Location\n",
+                  "PartTitle": "Settings added",
+                  "PartSubTitle": "Active Directory"
+                }
+              },
+              "asset": {
+                "idInputName": "ComponentId",
+                "type": "ApplicationInsights"
+              }
+            }
+          },
+          "18": {
+            "position": {
+              "x": 7,
+              "y": 14,
+              "colSpan": 7,
+              "rowSpan": 3
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": {
+                    "Subscriptio
+                  }
+                },
+                {
+                  "name": "Query",
+                  "value": "SecurityEvent \n| where EventID == 5136\n| where AccountType != \"Machine\" \n| where ObjectClass_5136_CF == \"user\" or ObjectClass_5136_CF == \"computer\" or ObjectClass_5136_CF == \"group\" or ObjectClass_5136_CF == \"organizationalUnit\"\n| extend Value1=iff(OperationType==\"%%14674\",\"Added\",tostring(OperationType))\n| extend Value=iff(Value1==\"%%14675\",\"Deleted\", tostring(Value1))\n| where Value == \"Deleted\"\n| summarize count() by Location=ObjectDN5136_CF, Administrator=SubjectUserName, ObjectType=ObjectClass_5136_CF, Setting=AttributeLDAPDisplayName_5136_CF, ValueRemoved=AttributeValue_CF, CorrelationID=CorrelationID_5136_CF, TimeGenerated\n| project ValueRemoved, Setting, Location, ObjectType, Administrator,TimeGenerated, CorrelationID\n| sort by Location\n"
+                },
+                {
+                  "name": "TimeRange",
+                  "value": "P1D"
+                },
+                {
+                  "name": "Version",
+                  "value": "1.0"
+                },
+                {
+                  "name": "DashboardId",
+                  "value": "
+                },
+                {
+                  "name": "PartId",
+                  "value": "3effcb50-5c5c-46bf-ade9-21e627487cf8"
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics"
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "aaa-cloud"
+                },
+                {
+                  "name": "resourceTypeMode",
+                  "value": "workspace"
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsGrid"
+                },
+                {
+                  "name": "Dimensions",
+                  "isOptional": true
+                },
+                {
+                  "name": "SpecificChart",
+                  "isOptional": true
+                },
+                {
+                  "name": "Scope",
+                  "isOptional": true
+                },
+                {
+                  "name": "DraftRequestParameters",
+                  "isOptional": true
+                },
+                {
+                  "name": "LegendOptions",
+                  "isOptional": true
+                },
+                {
+                  "name": "IsQueryContainTimeRange",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/Microsoft_OperationsManagementSuite_Workspace/PartType/LogsDashboardPart",
+              "settings": {
+                "content": {
+                  "GridColumnsWidth": {
+                    "Location": "197px"
+                  },
+                  "Query": "SecurityEvent \n| where Computer endswith \"aaa.gov\"\n| where EventID == 5136\n| where AccountType != \"Machine\" \n| where ObjectClass_5136_CF == \"user\" or ObjectClass_5136_CF == \"computer\" or ObjectClass_5136_CF == \"group\" or ObjectClass_5136_CF == \"organizationalUnit\"\n| extend Value1=iff(OperationType==\"%%14674\",\"Added\",tostring(OperationType))\n| extend Value=iff(Value1==\"%%14675\",\"Deleted\", tostring(Value1))\n| where Value == \"Deleted\"\n| summarize count() by Location=ObjectDN5136_CF, Administrator=SubjectUserName, ObjectType=ObjectClass_5136_CF, Setting=AttributeLDAPDisplayName_5136_CF, ValueRemoved=AttributeValue_CF, CorrelationID=CorrelationID_5136_CF, TimeGenerated\n| project ValueRemoved, Setting, Location, ObjectType, Administrator,TimeGenerated, CorrelationID\n| sort by Location\n\n",
+                  "PartTitle": "Settings removed",
+                  "PartSubTitle": "Active Directory"
+                }
+              },
+              "asset": {
+                "idInputName": "ComponentId",
+                "type": "ApplicationInsights"
+              }
+            }
+          },
+          "19": {
+            "position": {
+              "x": 0,
+              "y": 17,
+              "colSpan": 7,
+              "rowSpan": 3
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": {
+                    "Su
+                },
+                {
+                  "name": "Query",
+                  "value": "SecurityEvent\n| where EventID == 4722 or EventID == 4725\n| where AccountType != \"Machine\" \n| where TargetUserName !endswith \"$\" \n| extend Operation1=iff(EventID==\"4722\",\"Enabled\",tostring(OperationType))\n| extend Operation=iff(EventID==\"4725\",\"Disabled\", tostring(Operation1))\n| project Operation, Account=TargetUserName, Administrator=SubjectUserName, TimeGenerated\n"
+                },
+                {
+                  "name": "TimeRange",
+                  "value": "P1D"
+                },
+                {
+                  "name": "Version",
+                  "value": "1.0"
+                },
+                {
+                  "name": "DashboardId",
+                  "value": "
+                },
+                {
+                  "name": "PartId",
+                  "value": "3ab7390c-5445-4864-98c4-9ed9a4305108"
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics"
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "aaa-cloud"
+                },
+                {
+                  "name": "resourceTypeMode",
+                  "value": "workspace"
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsGrid"
+                },
+                {
+                  "name": "Dimensions",
+                  "isOptional": true
+                },
+                {
+                  "name": "SpecificChart",
+                  "isOptional": true
+                },
+                {
+                  "name": "Scope",
+                  "isOptional": true
+                },
+                {
+                  "name": "DraftRequestParameters",
+                  "isOptional": true
+                },
+                {
+                  "name": "LegendOptions",
+                  "isOptional": true
+                },
+                {
+                  "name": "IsQueryContainTimeRange",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/Microsoft_OperationsManagementSuite_Workspace/PartType/LogsDashboardPart",
+              "settings": {
+                "content": {
+                  "GridColumnsWidth": {
+                    "Operation": "98px",
+                    "Account": "99px",
+                    "Administrator": "143px",
+                    "TimeGenerated": "160px"
+                  },
+                  "Query": "SecurityEvent\n| where Computer endswith \"aaa.gov\"\n| where EventID == 4722 or EventID == 4725\n| where AccountType != \"Machine\" \n| where TargetUserName !endswith \"$\" \n| extend Operation1=iff(EventID==\"4722\",\"Enabled\",tostring(OperationType))\n| extend Operation=iff(EventID==\"4725\",\"Disabled\", tostring(Operation1))\n| project Operation, Account=TargetUserName, Administrator=SubjectUserName, TimeGenerated\n\n",
+                  "PartTitle": "Enabled/disabled user accounts",
+                  "PartSubTitle": "Active Directory"
+                }
+              },
+              "asset": {
+                "idInputName": "ComponentId",
+                "type": "ApplicationInsights"
+              }
+            }
+          },
+          "20": {
+            "position": {
+              "x": 7,
+              "y": 17,
+              "colSpan": 7,
+              "rowSpan": 3
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": {
+                    "Sub
+                  }
+                },
+                {
+                  "name": "Query",
+                  "value": "SecurityEvent \r\n| where EventID == 4742\r\n| parse EventData with * 'SubjectUserName\">' Administrator \"</Data>\" * \r\n| parse EventData with * 'TargetUserName\">' ComputerAccount \"$</Data>\" *\r\n| parse EventData with * 'ServicePrincipalNames\">' ServicePrincipalName \"</Data>\" * \r\n| parse EventData with * 'PasswordLastSet\">' PasswordLastSet \"</Data>\" * \r\n| parse EventData with * 'UserAccountControl\">' UserAccountControl \"</Data>\" * \r\n| parse EventData with * 'OldUacValue\">' OldUacValue \"</Data>\" * \r\n| parse EventData with * 'NewUacValue\">' NewUacValue \"</Data>\" * \r\n| project TimeGenerated, Administrator, ComputerAccount, UserAccountControl, OldUacValue, NewUacValue, ServicePrincipalName, PasswordLastSet, EventOriginId\r\n//| where UserAccountControl != \"-\" and UserAccountControl != \" \t\t%%2048\" and UserAccountControl != \" \t\t%%2080\"\n"
+                },
+                {
+                  "name": "TimeRange",
+                  "value": "P1D"
+                },
+                {
+                  "name": "Version",
+                  "value": "1.0"
+                },
+                {
+                  "name": "DashboardId",
+                  "value": "/s
+                },
+                {
+                  "name": "PartId",
+                  "value": "c35fba60-6742-45b3-b90a-ffd78dfbff0f"
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics"
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "aaa-cloud"
+                },
+                {
+                  "name": "resourceTypeMode",
+                  "value": "workspace"
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsGrid"
+                },
+                {
+                  "name": "Dimensions",
+                  "isOptional": true
+                },
+                {
+                  "name": "SpecificChart",
+                  "isOptional": true
+                },
+                {
+                  "name": "Scope",
+                  "isOptional": true
+                },
+                {
+                  "name": "DraftRequestParameters",
+                  "isOptional": true
+                },
+                {
+                  "name": "LegendOptions",
+                  "isOptional": true
+                },
+                {
+                  "name": "IsQueryContainTimeRange",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/Microsoft_OperationsManagementSuite_Workspace/PartType/LogsDashboardPart",
+              "settings": {
+                "content": {
+                  "GridColumnsWidth": {
+                    "TimeGenerated": "89px"
+                  },
+                  "Query": "SecurityEvent \n| where Computer endswith \"aaa.gov\"\n| where EventID == 4742\n| parse EventData with * 'SubjectUserName\">' Administrator \"</Data>\" * \n| parse EventData with * 'TargetUserName\">' ComputerAccount \"$</Data>\" *\n| parse EventData with * 'ServicePrincipalNames\">' ServicePrincipalName \"</Data>\" * \n| parse EventData with * 'PasswordLastSet\">' PasswordLastSet \"</Data>\" * \n| parse EventData with * 'UserAccountControl\">' UserAccountControl \"</Data>\" * \n| parse EventData with * 'OldUacValue\">' OldUacValue \"</Data>\" * \n| parse EventData with * 'NewUacValue\">' NewUacValue \"</Data>\" * \n| project TimeGenerated, Administrator, ComputerAccount, UserAccountControl, OldUacValue, NewUacValue, ServicePrincipalName, PasswordLastSet, EventOriginId\n| where UserAccountControl != \"-\" and UserAccountControl != \" \t\t%%2048\" and UserAccountControl != \" \t\t%%2080\"\n\n",
+                  "PartTitle": "Enabled/disabled computer accounts",
+                  "PartSubTitle": "UserAccountControl values reference: https://vaportech.wordpress.com/2007/12/06/useraccountcontrol/"
+                }
+              },
+              "asset": {
+                "idInputName": "ComponentId",
+                "type": "ApplicationInsights"
+              }
+            }
+          },
+          "21": {
+            "position": {
+              "x": 0,
+              "y": 20,
+              "colSpan": 6,
+              "rowSpan": 3
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": {
+                    "Subscri
+                  }
+                },
+                {
+                  "name": "Query",
+                  "value": "SecurityEvent \r\n| where EventID == 5138\r\n| summarize count() by OldObject=OldObjectDN5138_CF, NewObject=NewObjectDN5138_CF, Administrator=SubjectUserName_5138_CF, ObjectType=ObjectClass5138_CF   \r\n| project Administrator, ObjectType, OldObject, NewObject\r\n| sort by OldObject\n"
+                },
+                {
+                  "name": "TimeRange",
+                  "value": "2018-10-24T18:58:11.000Z/2018-12-18T18:58:11.268Z"
+                },
+                {
+                  "name": "Version",
+                  "value": "1.0"
+                },
+                {
+                  "name": "DashboardId",
+                  "value": 
+                },
+                {
+                  "name": "PartId",
+                  "value": "dabdfa9d-9ca9-494e-a6ae-fb8ebb78ccb2"
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics"
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "aaa-cloud"
+                },
+                {
+                  "name": "resourceTypeMode",
+                  "value": "workspace"
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsGrid"
+                },
+                {
+                  "name": "Dimensions",
+                  "isOptional": true
+                },
+                {
+                  "name": "SpecificChart",
+                  "isOptional": true
+                },
+                {
+                  "name": "Scope",
+                  "isOptional": true
+                },
+                {
+                  "name": "DraftRequestParameters",
+                  "isOptional": true
+                },
+                {
+                  "name": "LegendOptions",
+                  "isOptional": true
+                },
+                {
+                  "name": "IsQueryContainTimeRange",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/Microsoft_OperationsManagementSuite_Workspace/PartType/LogsDashboardPart",
+              "settings": {
+                "content": {
+                  "Query": "SecurityEvent \n| where Computer endswith \"aaa.gov\"\n| where EventID == 5138\n| summarize count() by ObjectLocation=NewObjectDN5138_CF, Administrator=SubjectUserName_5138_CF, ObjectType=ObjectClass5138_CF, CorrelationID=CorrelationID5138_CF, TimeGenerated\n| project ObjectLocation, ObjectType, Administrator, TimeGenerated, CorrelationID\n| sort by ObjectLocation\n\n",
+                  "PartTitle": "Objects restored from recycle bin",
+                  "PartSubTitle": "Active Directory"
+                }
+              },
+              "asset": {
+                "idInputName": "ComponentId",
+                "type": "ApplicationInsights"
+              }
+            }
+          },
+          "22": {
+            "position": {
+              "x": 6,
+              "y": 20,
+              "colSpan": 5,
+              "rowSpan": 3
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": {
+                    "S
+                  }
+                },
+                {
+                  "name": "Query",
+                  "value": "SecurityEvent \r\n| where EventID == 5136\r\n| where AccountType != \"Machine\"  \r\n| where ObjectClass_5136_CF == \"organizationalUnit\" \r\n| where AttributeLDAPDisplayName_5136_CF == \"gPLink\" \r\n| extend Link1=iff(OperationType==\"%%14674\",\"Linked\",tostring(OperationType))\r\n| extend GPO_Linked_to_OU=iff(Link1==\"%%14675\",\"Unlinked\", tostring(Link1)) \r\n| project Administrator=SubjectUserName, GPO_Linked_to_OU, GPO=AttributeValue_CF, CorrelationID=CorrelationID_5136_CF\n"
+                },
+                {
+                  "name": "TimeRange",
+                  "value": "2018-10-03T16:49:56.000Z/2019-01-07T16:49:56.511Z"
+                },
+                {
+                  "name": "Version",
+                  "value": "1.0"
+                },
+                {
+                  "name": "DashboardId",
+                  "value": "/
+                },
+                {
+                  "name": "PartId",
+                  "value": "96282a36-6644-42d2-8f34-1497fb7c1fd8"
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics"
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "aaa-cloud"
+                },
+                {
+                  "name": "resourceTypeMode",
+                  "value": "workspace"
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsGrid"
+                },
+                {
+                  "name": "Dimensions",
+                  "isOptional": true
+                },
+                {
+                  "name": "SpecificChart",
+                  "isOptional": true
+                },
+                {
+                  "name": "Scope",
+                  "isOptional": true
+                },
+                {
+                  "name": "DraftRequestParameters",
+                  "isOptional": true
+                },
+                {
+                  "name": "LegendOptions",
+                  "isOptional": true
+                },
+                {
+                  "name": "IsQueryContainTimeRange",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/Microsoft_OperationsManagementSuite_Workspace/PartType/LogsDashboardPart",
+              "settings": {
+                "content": {
+                  "GridColumnsWidth": {
+                    "Operation": "92px",
+                    "Administrator": "121px",
+                    "OU": "139px"
+                  },
+                  "Query": "SecurityEvent \n| where Computer endswith \"aaa.gov\"\n| where EventID == 5136\n| where AccountType != \"Machine\"  \n| where ObjectClass_5136_CF == \"organizationalUnit\" \n| where AttributeLDAPDisplayName_5136_CF == \"gPLink\" \n| extend Link1=iff(OperationType==\"%%14674\",\"Linked\",tostring(OperationType))\n| extend Operation=iff(Link1==\"%%14675\",\"Unlinked\", tostring(Link1)) \n| project Administrator=SubjectUserName, Operation, OU=ObjectDN_5136_CF, GPO=AttributeValue_CF, TimeGenerated, CorrelationID=CorrelationID_5136_CF\n",
+                  "PartTitle": "GPO to OU linkage",
+                  "PartSubTitle": "Active Directory"
+                }
+              },
+              "asset": {
+                "idInputName": "ComponentId",
+                "type": "ApplicationInsights"
+              }
+            }
+          },
+          "23": {
+            "position": {
+              "x": 11,
+              "y": 20,
+              "colSpan": 3,
+              "rowSpan": 3
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": {
+                    "S
+                  }
+                },
+                {
+                  "name": "Query",
+                  "value": "SecurityEvent\r\n| where EventID == 4740\r\n| summarize Amount = count() by Account=TargetUserName\r\n| top 10 by Amount\n"
+                },
+                {
+                  "name": "TimeRange",
+                  "value": "P1D"
+                },
+                {
+                  "name": "Version",
+                  "value": "1.0"
+                },
+                {
+                  "name": "DashboardId",
+                  "value": "/
+                },
+                {
+                  "name": "PartId",
+                  "value": "e15b7d80-761f-4f87-b839-2ca00a5d93b5"
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics"
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "aaa-cloud"
+                },
+                {
+                  "name": "resourceTypeMode",
+                  "value": "workspace"
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsGrid"
+                },
+                {
+                  "name": "Dimensions",
+                  "isOptional": true
+                },
+                {
+                  "name": "SpecificChart",
+                  "isOptional": true
+                },
+                {
+                  "name": "Scope",
+                  "isOptional": true
+                },
+                {
+                  "name": "DraftRequestParameters",
+                  "isOptional": true
+                },
+                {
+                  "name": "LegendOptions",
+                  "isOptional": true
+                },
+                {
+                  "name": "IsQueryContainTimeRange",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/Microsoft_OperationsManagementSuite_Workspace/PartType/LogsDashboardPart",
+              "settings": {
+                "content": {
+                  "Query": "SecurityEvent\n| where Computer endswith \"aaa.gov\"\n| where EventID == 4740\n| summarize Amount = count() by Account=TargetUserName\n| top 10 by Amount\n\n",
+                  "PartTitle": "Top 10 account lockouts",
+                  "PartSubTitle": "Active Directory"
+                }
+              },
+              "asset": {
+                "idInputName": "ComponentId",
+                "type": "ApplicationInsights"
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "model": {
+        "timeRange": {
+          "value": {
+            "relative": {
+              "duration": 24,
+              "timeUnit": 1
+            }
+          },
+          "type": "MsPortalFx.Composition.Configuration.ValueTypes.TimeRange"
+        },
+        "filterLocale": {
+          "value": "en-us"
+        },
+        "filters": {
+          "value": {
+            "MsPortalFx_TimeRange": {
+              "model": {
+                "format": "local",
+                "granularity": "auto",
+                "relative": "7d"
+              },
+              "displayCache": {
+                "name": "Local Time",
+                "value": "Past 7 days"
+              },
+              "filteredPartIds": [
+                "StartboardPart-LogsDashboardPart-26933f42-40c2-454c-bd5c-4722e36c48ff",
+                "StartboardPart-LogsDashboardPart-26933f42-40c2-454c-bd5c-4722e36c4901",
+                "StartboardPart-LogsDashboardPart-26933f42-40c2-454c-bd5c-4722e36c4903",
+                "StartboardPart-LogsDashboardPart-26933f42-40c2-454c-bd5c-4722e36c4905",
+                "StartboardPart-LogsDashboardPart-26933f42-40c2-454c-bd5c-4722e36c4907",
+                "StartboardPart-LogsDashboardPart-26933f42-40c2-454c-bd5c-4722e36c4909",
+                "StartboardPart-LogsDashboardPart-26933f42-40c2-454c-bd5c-4722e36c490b",
+                "StartboardPart-LogsDashboardPart-26933f42-40c2-454c-bd5c-4722e36c490f",
+                "StartboardPart-LogsDashboardPart-26933f42-40c2-454c-bd5c-4722e36c4911",
+                "StartboardPart-LogsDashboardPart-26933f42-40c2-454c-bd5c-4722e36c4913",
+                "StartboardPart-LogsDashboardPart-26933f42-40c2-454c-bd5c-4722e36c4915",
+                "StartboardPart-LogsDashboardPart-26933f42-40c2-454c-bd5c-4722e36c491d",
+                "StartboardPart-LogsDashboardPart-26933f42-40c2-454c-bd5c-4722e36c491f",
+                "StartboardPart-LogsDashboardPart-26933f42-40c2-454c-bd5c-4722e36c4921",
+                "StartboardPart-LogsDashboardPart-26933f42-40c2-454c-bd5c-4722e36c4923",
+                "StartboardPart-LogsDashboardPart-26933f42-40c2-454c-bd5c-4722e36c4925",
+                "StartboardPart-LogsDashboardPart-26933f42-40c2-454c-bd5c-4722e36c4927",
+                "StartboardPart-LogsDashboardPart-26933f42-40c2-454c-bd5c-4722e36c4929"
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "name": "Windows Active Directory (aaa.GOV)",
+  "type": "Microsoft.Portal/dashboards",
+  "location": "INSERT LOCATION",
+  "tags": {
+    "hidden-title": "Windows Active Directory (aaa.GOV)"
+  },
+  "apiVersion": "2015-08-01-preview"
+}
