@@ -1,0 +1,1151 @@
+{
+  "properties": {
+    "lenses": {
+      "0": {
+        "order": 0,
+        "parts": {
+          "0": {
+            "position": {
+              "x": 0,
+              "y": 0,
+              "colSpan": 21,
+              "rowSpan": 1
+            },
+            "metadata": {
+              "inputs": [],
+              "type": "Extension/HubsExtension/PartType/MarkdownPart",
+              "settings": {
+                "content": {
+                  "settings": {
+                    "content": "<img width='250px' height='52px' src='https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Microsoft_Azure_Logo.svg/2000px-Microsoft_Azure_Logo.svg.png'/>\n",
+                    "title": "",
+                    "subtitle": ""
+                  }
+                }
+              }
+            }
+          },
+          "1": {
+            "position": {
+              "x": 0,
+              "y": 1,
+              "colSpan": 5,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": {
+                    "
+                  }
+                },
+                {
+                  "name": "Query",
+                  "value": "AzureActivity\n| where Caller contains \"@\"\n| summarize count(CorrelationId) by Caller\n| sort by count_CorrelationId desc\n| render piechart\n"
+                },
+                {
+                  "name": "TimeRange",
+                  "value": "P1D"
+                },
+                {
+                  "name": "Dimensions",
+                  "value": {
+                    "xAxis": {
+                      "name": "Caller",
+                      "type": "String"
+                    },
+                    "yAxis": [
+                      {
+                        "name": "count_CorrelationId",
+                        "type": "Int64"
+                      }
+                    ],
+                    "splitBy": [],
+                    "aggregation": "Sum"
+                  }
+                },
+                {
+                  "name": "Version",
+                  "value": "1.0"
+                },
+                {
+                  "name": "PartId",
+                  "value": "50e5a138-922f-48d7-b7bd-34c8f80103c3"
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics"
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "my-workspace"
+                },
+                {
+                  "name": "resourceTypeMode",
+                  "value": "workspace"
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsDonut"
+                },
+                {
+                  "name": "DashboardId",
+                  "isOptional": true
+                },
+                {
+                  "name": "SpecificChart",
+                  "isOptional": true
+                },
+                {
+                  "name": "Scope",
+                  "isOptional": true
+                },
+                {
+                  "name": "DraftRequestParameters",
+                  "isOptional": true
+                },
+                {
+                  "name": "LegendOptions",
+                  "isOptional": true
+                },
+                {
+                  "name": "IsQueryContainTimeRange",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/Microsoft_OperationsManagementSuite_Workspace/PartType/LogsDashboardPart",
+              "settings": {
+                "content": {
+                  "Query": "AzureActivity\n| where Caller contains \"@\"\n| summarize count(CorrelationId) by Caller\n| sort by count_CorrelationId desc\n| render piechart\n\n",
+                  "PartTitle": "Total Activity by User",
+                  "PartSubTitle": "Azure (All Subscriptions)",
+                  "LegendOptions": {
+                    "isEnabled": true,
+                    "position": "Right"
+                  }
+                }
+              },
+              "asset": {
+                "idInputName": "ComponentId",
+                "type": "ApplicationInsights"
+              }
+            }
+          },
+          "2": {
+            "position": {
+              "x": 5,
+              "y": 1,
+              "colSpan": 5,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": {
+                    "
+                  }
+                },
+                {
+                  "name": "Query",
+                  "value": "AzureActivity\n| where Caller contains \"@\" and TimeGenerated >= ago(14d)\n| where Category == \"Administrative\"\n| summarize Current_Week = countif(TimeGenerated >= ago(7d)), Previous_Week = countif(TimeGenerated < ago(7d)) by Caller\n| where Current_Week > Previous_Week\n| extend growth = iif(Previous_Week != 0, toreal(Current_Week)/toreal(Previous_Week), toreal(Current_Week))\n| sort by growth desc nulls last\n| project User=Caller, Percent_Increased = toint(growth)\n| render piechart \n"
+                },
+                {
+                  "name": "Dimensions",
+                  "value": {
+                    "xAxis": {
+                      "name": "User",
+                      "type": "String"
+                    },
+                    "yAxis": [
+                      {
+                        "name": "Percent_Increased",
+                        "type": "Int32"
+                      }
+                    ],
+                    "splitBy": [],
+                    "aggregation": "Sum"
+                  }
+                },
+                {
+                  "name": "Version",
+                  "value": "1.0"
+                },
+                {
+                  "name": "PartId",
+                  "value": "55622741-c96b-475f-9e84-bd25a84c477a"
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics"
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "my-workspace"
+                },
+                {
+                  "name": "resourceTypeMode",
+                  "value": "workspace"
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsDonut"
+                },
+                {
+                  "name": "TimeRange",
+                  "isOptional": true
+                },
+                {
+                  "name": "DashboardId",
+                  "isOptional": true
+                },
+                {
+                  "name": "SpecificChart",
+                  "isOptional": true
+                },
+                {
+                  "name": "Scope",
+                  "isOptional": true
+                },
+                {
+                  "name": "DraftRequestParameters",
+                  "isOptional": true
+                },
+                {
+                  "name": "LegendOptions",
+                  "isOptional": true
+                },
+                {
+                  "name": "IsQueryContainTimeRange",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/Microsoft_OperationsManagementSuite_Workspace/PartType/LogsDashboardPart",
+              "settings": {
+                "content": {
+                  "Query": "AzureActivity\n| where Caller contains \"@\" and TimeGenerated >= ago(14d)\n| where Category == \"Administrative\"\n| summarize Current_Week = countif(TimeGenerated >= ago(7d)), Previous_Week = countif(TimeGenerated < ago(7d)) by Caller\n| where Current_Week > Previous_Week\n| extend growth = iif(Previous_Week != 0, toreal(Current_Week)/toreal(Previous_Week), toreal(Current_Week))\n| sort by growth desc nulls last\n| project User=Caller, Percent_Increased = toint(growth)\n| render piechart \n\n",
+                  "PartTitle": "Users with Increased Activities - This Week vs. Last Week",
+                  "PartSubTitle": "Azure Users Only",
+                  "LegendOptions": {
+                    "isEnabled": true,
+                    "position": "Right"
+                  }
+                }
+              },
+              "asset": {
+                "idInputName": "ComponentId",
+                "type": "ApplicationInsights"
+              },
+              "filters": {
+                "MsPortalFx_TimeRange": {
+                  "model": {
+                    "format": "local",
+                    "granularity": "auto",
+                    "relative": "30d"
+                  }
+                }
+              }
+            }
+          },
+          "3": {
+            "position": {
+              "x": 10,
+              "y": 1,
+              "colSpan": 5,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": {
+                    "
+                  }
+                },
+                {
+                  "name": "Query",
+                  "value": "AzureActivity \r\n| where ActivityStatus == \"Succeeded\"\r\n| where OperationName == \"Deallocate Virtual Machine\" or OperationName == \"Start Virtual Machine\" or OperationName == \"Restart Virtual Machine\"\r\n| where Caller contains \"@\" \r\n| summarize count() by ActivityStatus, OperationName, Caller , CorrelationId, Resource, ResourceProvider, ResourceProviderValue, ResourceGroup, SubscriptionId\n"
+                },
+                {
+                  "name": "TimeRange",
+                  "value": "P7D"
+                },
+                {
+                  "name": "Dimensions",
+                  "value": {
+                    "xAxis": {
+                      "name": "OperationName",
+                      "type": "String"
+                    },
+                    "yAxis": [
+                      {
+                        "name": "count_",
+                        "type": "Int64"
+                      }
+                    ],
+                    "splitBy": [],
+                    "aggregation": "Sum"
+                  }
+                },
+                {
+                  "name": "Version",
+                  "value": "1.0"
+                },
+                {
+                  "name": "PartId",
+                  "value": "602ee8c9-c303-4f10-9684-cfa56e7adea7"
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics"
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "my-workspace"
+                },
+                {
+                  "name": "resourceTypeMode",
+                  "value": "workspace"
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsDonut"
+                },
+                {
+                  "name": "DashboardId",
+                  "isOptional": true
+                },
+                {
+                  "name": "SpecificChart",
+                  "isOptional": true
+                },
+                {
+                  "name": "Scope",
+                  "isOptional": true
+                },
+                {
+                  "name": "DraftRequestParameters",
+                  "isOptional": true
+                },
+                {
+                  "name": "LegendOptions",
+                  "isOptional": true
+                },
+                {
+                  "name": "IsQueryContainTimeRange",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/Microsoft_OperationsManagementSuite_Workspace/PartType/LogsDashboardPart",
+              "settings": {
+                "content": {
+                  "Query": "AzureActivity \n| where ActivityStatus == \"Succeeded\"\n| where OperationName == \"Deallocate Virtual Machine\" or OperationName == \"Start Virtual Machine\" or OperationName == \"Restart Virtual Machine\"\n| where Caller contains \"@\" \n| summarize count() by ActivityStatus, OperationName, Caller , CorrelationId, Resource, ResourceProvider, ResourceProviderValue, ResourceGroup, SubscriptionId\n\n",
+                  "PartTitle": "Virtual Machine Boot Activity (Successful)",
+                  "PartSubTitle": "Azure (All Subscriptions)",
+                  "LegendOptions": {
+                    "isEnabled": true,
+                    "position": "Right"
+                  }
+                }
+              },
+              "asset": {
+                "idInputName": "ComponentId",
+                "type": "ApplicationInsights"
+              },
+              "filters": {
+                "MsPortalFx_TimeRange": {
+                  "model": {
+                    "format": "local",
+                    "granularity": "auto",
+                    "relative": "7d"
+                  }
+                }
+              }
+            }
+          },
+          "4": {
+            "position": {
+              "x": 15,
+              "y": 1,
+              "colSpan": 6,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "resourceTypeMode",
+                  "isOptional": true
+                },
+                {
+                  "name": "ComponentId",
+                  "isOptional": true
+                },
+                {
+                  "name": "Scope",
+                  "value": {
+                    "resourceIds": [
+                      
+                    ]
+                  },
+                  "isOptional": true
+                },
+                {
+                  "name": "PartId",
+                  "value": "9e02ccea-49d3-43d5-98a9-0f872161e87a",
+                  "isOptional": true
+                },
+                {
+                  "name": "Version",
+                  "value": "2.0",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeRange",
+                  "value": "2021-12-01T17:41:29.000Z/2022-01-12T17:41:29.271Z",
+                  "isOptional": true
+                },
+                {
+                  "name": "DashboardId",
+                  "isOptional": true
+                },
+                {
+                  "name": "DraftRequestParameters",
+                  "isOptional": true
+                },
+                {
+                  "name": "Query",
+                  "value": "AzureActivity\n| where ActivityStatusValue == \"Succeeded\"\n| where OperationName == \"Delete Security Rule\" or OperationName == \"Create or Update Security Rule\"\n| parse ResourceId with * \"networkSecurityGroups/\" NSG \"/\" *\n| summarize count() by TimeGenerated, Caller, ResourceGroup, NSG, Resource, OperationName, ActivityStatus\n| sort by TimeGenerated desc \n",
+                  "isOptional": true
+                },
+                {
+                  "name": "ControlType",
+                  "value": "FrameControlChart",
+                  "isOptional": true
+                },
+                {
+                  "name": "SpecificChart",
+                  "value": "Pie",
+                  "isOptional": true
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics",
+                  "isOptional": true
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "my-workspace",
+                  "isOptional": true
+                },
+                {
+                  "name": "Dimensions",
+                  "value": {
+                    "xAxis": {
+                      "name": "OperationName",
+                      "type": "string"
+                    },
+                    "yAxis": [
+                      {
+                        "name": "count_",
+                        "type": "long"
+                      }
+                    ],
+                    "splitBy": [],
+                    "aggregation": "Sum"
+                  },
+                  "isOptional": true
+                },
+                {
+                  "name": "LegendOptions",
+                  "value": {
+                    "isEnabled": true,
+                    "position": "Bottom"
+                  },
+                  "isOptional": true
+                },
+                {
+                  "name": "IsQueryContainTimeRange",
+                  "value": false,
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/Microsoft_OperationsManagementSuite_Workspace/PartType/LogsDashboardPart",
+              "settings": {
+                "content": {
+                  "Query": "AzureActivity\n| where ActivityStatusValue == \"Succeeded\"\n| where OperationName == \"Delete Security Rule\" or OperationName == \"Create or Update Security Rule\"\n| parse ResourceId with * \"networkSecurityGroups/\" NSG \"/\" *\n| summarize count() by TimeGenerated, Caller, ResourceGroup, NSG, Resource, OperationName, ActivityStatus\n| sort by TimeGenerated desc \n\n",
+                  "ControlType": "AnalyticsGrid",
+                  "PartTitle": "NSG Rule Changes (Successful)"
+                }
+              },
+              "filters": {
+                "MsPortalFx_TimeRange": {
+                  "model": {
+                    "format": "local",
+                    "granularity": "auto",
+                    "relative": "30d"
+                  }
+                }
+              }
+            }
+          },
+          "5": {
+            "position": {
+              "x": 0,
+              "y": 5,
+              "colSpan": 10,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": {
+                    "Subsc
+                  }
+                },
+                {
+                  "name": "Query",
+                  "value": "AzureActivity \r\n| where CallerIpAddress != \"\" \r\n| where Caller contains \"@\" \r\n| summarize count(CorrelationId) by CallerIpAddress, Caller, OperationName, Resource, ResourceProvider, CorrelationId, ResourceGroup, SubscriptionId\n"
+                },
+                {
+                  "name": "TimeRange",
+                  "value": "P7D"
+                },
+                {
+                  "name": "Dimensions",
+                  "value": {
+                    "xAxis": {
+                      "name": "CallerIpAddress",
+                      "type": "String"
+                    },
+                    "yAxis": [
+                      {
+                        "name": "count_CorrelationId",
+                        "type": "Int64"
+                      }
+                    ],
+                    "splitBy": [
+                      {
+                        "name": "Caller",
+                        "type": "String"
+                      }
+                    ],
+                    "aggregation": "Sum"
+                  }
+                },
+                {
+                  "name": "Version",
+                  "value": "1.0"
+                },
+                {
+                  "name": "PartId",
+                  "value": "343f822c-9734-4781-9271-a46a7d1b0dd2"
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics"
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "my-workspace"
+                },
+                {
+                  "name": "resourceTypeMode",
+                  "value": "workspace"
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsChart"
+                },
+                {
+                  "name": "SpecificChart",
+                  "value": "Bar"
+                },
+                {
+                  "name": "DashboardId",
+                  "isOptional": true
+                },
+                {
+                  "name": "Scope",
+                  "isOptional": true
+                },
+                {
+                  "name": "DraftRequestParameters",
+                  "isOptional": true
+                },
+                {
+                  "name": "LegendOptions",
+                  "isOptional": true
+                },
+                {
+                  "name": "IsQueryContainTimeRange",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/Microsoft_OperationsManagementSuite_Workspace/PartType/LogsDashboardPart",
+              "settings": {
+                "content": {
+                  "PartTitle": "User Activity by IP Address",
+                  "PartSubTitle": "Azure (All Subscriptions)"
+                }
+              },
+              "asset": {
+                "idInputName": "ComponentId",
+                "type": "ApplicationInsights"
+              }
+            }
+          },
+          "6": {
+            "position": {
+              "x": 10,
+              "y": 5,
+              "colSpan": 11,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": {
+                    "S
+                  }
+                },
+                {
+                  "name": "Query",
+                  "value": "AzureActivity\r\n| summarize EventsCount = count(EventDataId) by bin(TimeGenerated, 1h)\n"
+                },
+                {
+                  "name": "TimeRange",
+                  "value": "P1D"
+                },
+                {
+                  "name": "Dimensions",
+                  "value": {
+                    "xAxis": {
+                      "name": "TimeGenerated",
+                      "type": "DateTime"
+                    },
+                    "yAxis": [
+                      {
+                        "name": "EventsCount",
+                        "type": "Int64"
+                      }
+                    ],
+                    "splitBy": [],
+                    "aggregation": "Sum"
+                  }
+                },
+                {
+                  "name": "Version",
+                  "value": "1.0"
+                },
+                {
+                  "name": "PartId",
+                  "value": "124e4ef2-1661-4b02-94c8-696891de8153"
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics"
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "my-workspace"
+                },
+                {
+                  "name": "resourceTypeMode",
+                  "value": "workspace"
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsChart"
+                },
+                {
+                  "name": "SpecificChart",
+                  "value": "Line"
+                },
+                {
+                  "name": "DashboardId",
+                  "isOptional": true
+                },
+                {
+                  "name": "Scope",
+                  "isOptional": true
+                },
+                {
+                  "name": "DraftRequestParameters",
+                  "isOptional": true
+                },
+                {
+                  "name": "LegendOptions",
+                  "isOptional": true
+                },
+                {
+                  "name": "IsQueryContainTimeRange",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/Microsoft_OperationsManagementSuite_Workspace/PartType/LogsDashboardPart",
+              "settings": {
+                "content": {
+                  "PartTitle": "Events Over Time (Past 7 Days)",
+                  "PartSubTitle": "Azure (All Subscriptions)"
+                }
+              },
+              "asset": {
+                "idInputName": "ComponentId",
+                "type": "ApplicationInsights"
+              },
+              "filters": {
+                "MsPortalFx_TimeRange": {
+                  "model": {
+                    "format": "local",
+                    "granularity": "auto",
+                    "relative": "7d"
+                  }
+                }
+              }
+            }
+          },
+          "7": {
+            "position": {
+              "x": 0,
+              "y": 9,
+              "colSpan": 10,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": {
+                    "
+                  }
+                },
+                {
+                  "name": "Query",
+                  "value": "AzureActivity\r\n| where Caller contains \"@\"\r\n| where OperationName contains \"Delete\"  \r\n| summarize count() by ActivityStatus, OperationName, Caller , CorrelationId, Resource, ResourceGroup, SubscriptionId\n"
+                },
+                {
+                  "name": "TimeRange",
+                  "value": "P7D"
+                },
+                {
+                  "name": "Version",
+                  "value": "1.0"
+                },
+                {
+                  "name": "PartId",
+                  "value": "e00141e0-32d3-43d9-82f3-1fb887f0859f"
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics"
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "my-workspace"
+                },
+                {
+                  "name": "resourceTypeMode",
+                  "value": "workspace"
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsGrid"
+                },
+                {
+                  "name": "Dimensions",
+                  "isOptional": true
+                },
+                {
+                  "name": "DashboardId",
+                  "isOptional": true
+                },
+                {
+                  "name": "SpecificChart",
+                  "isOptional": true
+                },
+                {
+                  "name": "Scope",
+                  "isOptional": true
+                },
+                {
+                  "name": "DraftRequestParameters",
+                  "isOptional": true
+                },
+                {
+                  "name": "LegendOptions",
+                  "isOptional": true
+                },
+                {
+                  "name": "IsQueryContainTimeRange",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/Microsoft_OperationsManagementSuite_Workspace/PartType/LogsDashboardPart",
+              "settings": {
+                "content": {
+                  "PartTitle": "Resource Deletions",
+                  "PartSubTitle": "Azure (All Subscriptions)",
+                  "Query": "AzureActivity\n| where Caller contains \"@\"\n| where OperationName contains \"Delete\"  \n| summarize count(CorrelationId) by ActivityStatus, OperationName, Caller, Resource, ResourceProvider, ResourceGroup, SubscriptionId, CorrelationId\n| sort by Caller",
+                  "GridColumnsWidth": {
+                    "ActivityStatus": "114px",
+                    "OperationName": "172px",
+                    "Resource": "252px",
+                    "ResourceProvider": "167px",
+                    "SubscriptionId": "264px",
+                    "CorrelationId": "266px"
+                  }
+                }
+              },
+              "asset": {
+                "idInputName": "ComponentId",
+                "type": "ApplicationInsights"
+              }
+            }
+          },
+          "8": {
+            "position": {
+              "x": 10,
+              "y": 9,
+              "colSpan": 11,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": {
+                    "
+                  }
+                },
+                {
+                  "name": "Query",
+                  "value": "AzureActivity\r\n| where Caller contains \"@\"\r\n| where OperationName contains \"Create\"  \r\n| summarize count() by ActivityStatus, OperationName, Caller , CorrelationId, Resource, ResourceGroup, SubscriptionId\n"
+                },
+                {
+                  "name": "TimeRange",
+                  "value": "P7D"
+                },
+                {
+                  "name": "Version",
+                  "value": "1.0"
+                },
+                {
+                  "name": "PartId",
+                  "value": "d88bcfb3-bddc-41df-822e-44ac70e1fa5e"
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics"
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "my-workspace"
+                },
+                {
+                  "name": "resourceTypeMode",
+                  "value": "workspace"
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsGrid"
+                },
+                {
+                  "name": "Dimensions",
+                  "isOptional": true
+                },
+                {
+                  "name": "DashboardId",
+                  "isOptional": true
+                },
+                {
+                  "name": "SpecificChart",
+                  "isOptional": true
+                },
+                {
+                  "name": "Scope",
+                  "isOptional": true
+                },
+                {
+                  "name": "DraftRequestParameters",
+                  "isOptional": true
+                },
+                {
+                  "name": "LegendOptions",
+                  "isOptional": true
+                },
+                {
+                  "name": "IsQueryContainTimeRange",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/Microsoft_OperationsManagementSuite_Workspace/PartType/LogsDashboardPart",
+              "settings": {
+                "content": {
+                  "PartTitle": "Resource Creations",
+                  "PartSubTitle": "Azure (All Subscriptions)",
+                  "Query": "AzureActivity\n| where Caller contains \"@\"\n| where OperationName contains \"Create\"  \n| summarize count(CorrelationId) by ActivityStatus, OperationName, Caller, Resource, ResourceProvider, ResourceGroup, SubscriptionId, CorrelationId\n| sort by Caller",
+                  "GridColumnsWidth": {
+                    "ActivityStatus": "114px",
+                    "OperationName": "206px"
+                  }
+                }
+              },
+              "asset": {
+                "idInputName": "ComponentId",
+                "type": "ApplicationInsights"
+              }
+            }
+          },
+          "9": {
+            "position": {
+              "x": 0,
+              "y": 13,
+              "colSpan": 10,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": {
+                    "Subs
+                  }
+                },
+                {
+                  "name": "Query",
+                  "value": "AzureActivity \r\n| where ActivityStatus == \"Failed\"\r\n| where Caller contains \"@\" \r\n| summarize count(CorrelationId) by OperationName, Caller, Resource, ActivityStatus, ResourceProvider, CorrelationId, ResourceGroup, SubscriptionId\r\n| sort by Caller\n"
+                },
+                {
+                  "name": "TimeRange",
+                  "value": "P7D"
+                },
+                {
+                  "name": "Version",
+                  "value": "1.0"
+                },
+                {
+                  "name": "PartId",
+                  "value": "79fd7475-9fe3-4b51-8c26-a5c769cb9920"
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics"
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "my-workspace"
+                },
+                {
+                  "name": "resourceTypeMode",
+                  "value": "workspace"
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsGrid"
+                },
+                {
+                  "name": "Dimensions",
+                  "isOptional": true
+                },
+                {
+                  "name": "DashboardId",
+                  "isOptional": true
+                },
+                {
+                  "name": "SpecificChart",
+                  "isOptional": true
+                },
+                {
+                  "name": "Scope",
+                  "isOptional": true
+                },
+                {
+                  "name": "DraftRequestParameters",
+                  "isOptional": true
+                },
+                {
+                  "name": "LegendOptions",
+                  "isOptional": true
+                },
+                {
+                  "name": "IsQueryContainTimeRange",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/Microsoft_OperationsManagementSuite_Workspace/PartType/LogsDashboardPart",
+              "settings": {
+                "content": {
+                  "PartTitle": "Activity Failures",
+                  "PartSubTitle": "Azure (All Subscriptions)",
+                  "GridColumnsWidth": {
+                    "Caller": "159px",
+                    "ActivityStatus": "113px",
+                    "Resource": "265px"
+                  }
+                }
+              },
+              "asset": {
+                "idInputName": "ComponentId",
+                "type": "ApplicationInsights"
+              }
+            }
+          },
+          "10": {
+            "position": {
+              "x": 0,
+              "y": 17,
+              "colSpan": 21,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": {
+                    "
+                  }
+                },
+                {
+                  "name": "Query",
+                  "value": "AzureActivity \r\n| project TimeGenerated, Caller, CallerIpAddress, OperationName, ActivityStatus, Resource, ResourceGroup, ResourceProvider, CorrelationId, SubscriptionId\r\n| sort by TimeGenerated desc \n"
+                },
+                {
+                  "name": "TimeRange",
+                  "value": "PT1H"
+                },
+                {
+                  "name": "Version",
+                  "value": "1.0"
+                },
+                {
+                  "name": "PartId",
+                  "value": "94709c38-5b54-47dc-bb42-2777ebe2f28e"
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics"
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "my-workspace"
+                },
+                {
+                  "name": "resourceTypeMode",
+                  "value": "workspace"
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsGrid"
+                },
+                {
+                  "name": "Dimensions",
+                  "isOptional": true
+                },
+                {
+                  "name": "DashboardId",
+                  "isOptional": true
+                },
+                {
+                  "name": "SpecificChart",
+                  "isOptional": true
+                },
+                {
+                  "name": "Scope",
+                  "isOptional": true
+                },
+                {
+                  "name": "DraftRequestParameters",
+                  "isOptional": true
+                },
+                {
+                  "name": "LegendOptions",
+                  "isOptional": true
+                },
+                {
+                  "name": "IsQueryContainTimeRange",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/Microsoft_OperationsManagementSuite_Workspace/PartType/LogsDashboardPart",
+              "settings": {
+                "content": {
+                  "PartTitle": "Recent Azure Activity",
+                  "PartSubTitle": "Azure (All Subscriptions)",
+                  "GridColumnsWidth": {
+                    "TimeGenerated": "196px",
+                    "Caller": "196px",
+                    "CallerIpAddress": "130px",
+                    "OperationName": "279px",
+                    "ActivityStatus": "117px",
+                    "Resource": "196px",
+                    "ResourceGroup": "196px",
+                    "ResourceProvider": "196px",
+                    "CorrelationId": "196px",
+                    "SubscriptionId": "196px"
+                  }
+                }
+              },
+              "asset": {
+                "idInputName": "ComponentId",
+                "type": "ApplicationInsights"
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "model": {
+        "timeRange": {
+          "value": {
+            "relative": {
+              "duration": 24,
+              "timeUnit": 1
+            }
+          },
+          "type": "MsPortalFx.Composition.Configuration.ValueTypes.TimeRange"
+        },
+        "filterLocale": {
+          "value": "en-us"
+        },
+        "filters": {
+          "value": {
+            "MsPortalFx_TimeRange": {
+              "model": {
+                "format": "local",
+                "granularity": "auto",
+                "relative": "24h"
+              },
+              "displayCache": {
+                "name": "Local Time",
+                "value": "Past 24 hours"
+              },
+              "filteredPartIds": [
+                "StartboardPart-LogsDashboardPart-2cdc0517-9c41-4159-a1f8-191b72ece08b",
+                "StartboardPart-LogsDashboardPart-2cdc0517-9c41-4159-a1f8-191b72ece08d",
+                "StartboardPart-LogsDashboardPart-2cdc0517-9c41-4159-a1f8-191b72ece08f",
+                "StartboardPart-LogsDashboardPart-2cdc0517-9c41-4159-a1f8-191b72ece091",
+                "StartboardPart-LogsDashboardPart-2cdc0517-9c41-4159-a1f8-191b72ece093",
+                "StartboardPart-LogsDashboardPart-2cdc0517-9c41-4159-a1f8-191b72ece095",
+                "StartboardPart-LogsDashboardPart-2cdc0517-9c41-4159-a1f8-191b72ece097",
+                "StartboardPart-LogsDashboardPart-2cdc0517-9c41-4159-a1f8-191b72ece099",
+                "StartboardPart-LogsDashboardPart-2cdc0517-9c41-4159-a1f8-191b72ece09b",
+                "StartboardPart-LogsDashboardPart-2cdc0517-9c41-4159-a1f8-191b72ece09d"
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "name": "Azure Activity",
+  "type": "Microsoft.Portal/dashboards",
+  "location": "INSERT LOCATION",
+  "tags": {
+    "hidden-title": "Azure Activity"
+  },
+  "apiVersion": "2015-08-01-preview"
+}
