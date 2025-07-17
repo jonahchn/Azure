@@ -1,0 +1,2615 @@
+{
+  "properties": {
+    "lenses": {
+      "0": {
+        "order": 0,
+        "parts": {
+          "0": {
+            "position": {
+              "x": 0,
+              "y": 0,
+              "colSpan": 20,
+              "rowSpan": 1
+            },
+            "metadata": {
+              "inputs": [],
+              "type": "Extension/HubsExtension/PartType/MarkdownPart",
+              "settings": {
+                "content": {
+                  "settings": {
+                    "content": "<div style=\"font-size:300%;\">Azure SQL Databases</div>",
+                    "title": "",
+                    "subtitle": "",
+                    "markdownSource": 1
+                  }
+                }
+              }
+            }
+          },
+          "1": {
+            "position": {
+              "x": 0,
+              "y": 1,
+              "colSpan": 2,
+              "rowSpan": 2
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "filter",
+                  "isOptional": true
+                },
+                {
+                  "name": "resourceType",
+                  "value": "Microsoft.Sql/servers/databases"
+                },
+                {
+                  "name": "kind",
+                  "isOptional": true
+                },
+                {
+                  "name": "view",
+                  "value": {
+                    "id": "d681780b-e1e5-4168-9cbb-17ee55334007",
+                    "name": "d681780b-e1e5-4168-9cbb-17ee55334007",
+                    "filter": "",
+                    "filterFacets": [
+                      {
+                        "key": "resourceGroup",
+                        "uniqueId": "d681780b-e1e5-4168-9cbb-17ee55334003",
+                        "display": "Resource group",
+                        "operator": 1,
+                        "isAllValues": true,
+                        "facetKind": 1
+                      },
+                      {
+                        "key": "locationDisplayName",
+                        "uniqueId": "d681780b-e1e5-4168-9cbb-17ee55334004",
+                        "display": "Location",
+                        "operator": 1,
+                        "isAllValues": true,
+                        "facetKind": 1
+                      }
+                    ],
+                    "groupByValue": "",
+                    "sortedColumns": [
+                      {
+                        "sortBy": "name",
+                        "order": 1
+                      }
+                    ],
+                    "showAll": false,
+                    "gridColumns": [
+                      {
+                        "id": "serverName",
+                        "visible": true,
+                        "name": "Server"
+                      },
+                      {
+                        "id": "assetType",
+                        "visible": false,
+                        "name": "Type"
+                      },
+                      {
+                        "id": "resourceGroup",
+                        "visible": false,
+                        "name": "Resource group"
+                      },
+                      {
+                        "id": "kind",
+                        "visible": false,
+                        "name": "Kind"
+                      },
+                      {
+                        "id": "resourceGroupId",
+                        "visible": false,
+                        "name": "Resource group ID"
+                      },
+                      {
+                        "id": "locationId",
+                        "visible": false,
+                        "name": "Location ID"
+                      },
+                      {
+                        "id": "resourceId",
+                        "visible": false,
+                        "name": "Resource ID"
+                      },
+                      {
+                        "id": "resourceType",
+                        "visible": false,
+                        "name": "Resource type"
+                      },
+                      {
+                        "id": "subscriptionId",
+                        "visible": false,
+                        "name": "Subscription ID"
+                      },
+                      {
+                        "id": "tagsArray",
+                        "visible": false,
+                        "name": "Tags"
+                      },
+                      {
+                        "id": "status",
+                        "visible": false,
+                        "name": "Status"
+                      },
+                      {
+                        "id": "replicaTypeDisplay",
+                        "visible": false,
+                        "name": "Replica type"
+                      },
+                      {
+                        "id": "serviceTier",
+                        "visible": false,
+                        "name": "Pricing tier"
+                      },
+                      {
+                        "id": "location",
+                        "visible": false,
+                        "name": "Location"
+                      },
+                      {
+                        "id": "subscription",
+                        "visible": false,
+                        "name": "Subscription"
+                      },
+                      {
+                        "id": "tags.app",
+                        "visible": false,
+                        "name": "App"
+                      },
+                      {
+                        "id": "tags.appilcation",
+                        "visible": false,
+                        "name": "Appilcation"
+                      },
+                      {
+                        "id": "tags.application",
+                        "visible": false,
+                        "name": "Application"
+                      },
+                      {
+                        "id": "tags.application ",
+                        "visible": false,
+                        "name": "Application "
+                      },
+                      {
+                        "id": "tags.assets",
+                        "visible": false,
+                        "name": "Assets"
+                      },
+                      {
+                        "id": "tags.autoschedule",
+                        "visible": false,
+                        "name": "AutoSchedule"
+                      },
+                      {
+                        "id": "tags.autoschedule1",
+                        "visible": false,
+                        "name": "AutoSchedule1"
+                      },
+                      {
+                        "id": "tags.autoschedule9",
+                        "visible": false,
+                        "name": "AutoSchedule9"
+                      },
+                      {
+                        "id": "tags.autoscheduleexception",
+                        "visible": false,
+                        "name": "AutoScheduleException"
+                      },
+                      {
+                        "id": "tags.correlationid",
+                        "visible": false,
+                        "name": "correlationId"
+                      },
+                      {
+                        "id": "tags.cost center",
+                        "visible": false,
+                        "name": "Cost Center"
+                      },
+                      {
+                        "id": "tags.costcenter",
+                        "visible": false,
+                        "name": "CostCenter"
+                      },
+                      {
+                        "id": "tags.created by",
+                        "visible": false,
+                        "name": "Created By"
+                      },
+                      {
+                        "id": "tags.created-by",
+                        "visible": false,
+                        "name": "created-by"
+                      },
+                      {
+                        "id": "tags.createdby",
+                        "visible": false,
+                        "name": "CreatedBy"
+                      },
+                      {
+                        "id": "tags.dashboardkey",
+                        "visible": false,
+                        "name": "dashboardKey"
+                      },
+                      {
+                        "id": "tags.dep",
+                        "visible": false,
+                        "name": "Dep"
+                      },
+                      {
+                        "id": "tags.department",
+                        "visible": false,
+                        "name": "Department"
+                      },
+                      {
+                        "id": "tags.department ",
+                        "visible": false,
+                        "name": "Department "
+                      },
+                      {
+                        "id": "tags.dept",
+                        "visible": false,
+                        "name": "Dept"
+                      },
+                      {
+                        "id": "tags.displayname",
+                        "visible": false,
+                        "name": "displayName"
+                      },
+                      {
+                        "id": "tags.dpm",
+                        "visible": false,
+                        "name": "DPM"
+                      },
+                      {
+                        "id": "tags.environment",
+                        "visible": false,
+                        "name": "Environment"
+                      },
+                      {
+                        "id": "tags.envrionment",
+                        "visible": false,
+                        "name": "Envrionment"
+                      },
+                      {
+                        "id": "tags.evmnt",
+                        "visible": false,
+                        "name": "EVMNT"
+                      },
+                      {
+                        "id": "tags.fisma",
+                        "visible": false,
+                        "name": "FISMA"
+                      },
+                      {
+                        "id": "tags.imagebuildertemplate",
+                        "visible": false,
+                        "name": "imagebuilderTemplate"
+                      },
+                      {
+                        "id": "tags.imagetemplatename",
+                        "visible": false,
+                        "name": "imageTemplateName"
+                      },
+                      {
+                        "id": "tags.imagetemplateresourcegroupname",
+                        "visible": false,
+                        "name": "imageTemplateResourceGroupName"
+                      },
+                      {
+                        "id": "tags.isqnamaker",
+                        "visible": false,
+                        "name": "isqnamaker"
+                      },
+                      {
+                        "id": "tags.key",
+                        "visible": false,
+                        "name": "key"
+                      },
+                      {
+                        "id": "tags.logicappscategory",
+                        "visible": false,
+                        "name": "LogicAppsCategory"
+                      },
+                      {
+                        "id": "tags.magicvalue",
+                        "visible": false,
+                        "name": "magicvalue"
+                      },
+                      {
+                        "id": "tags.managed instance",
+                        "visible": false,
+                        "name": "managed instance"
+                      },
+                      {
+                        "id": "tags.ms-resource-usage",
+                        "visible": false,
+                        "name": "ms-resource-usage"
+                      },
+                      {
+                        "id": "tags.name",
+                        "visible": false,
+                        "name": "name"
+                      },
+                      {
+                        "id": "tags.ocio-jmp-win2016-user",
+                        "visible": false,
+                        "name": "OCIO-JMP-Win2016-User"
+                      },
+                      {
+                        "id": "tags.ocio-jmp-win2019-user",
+                        "visible": false,
+                        "name": "OCIO-JMP-Win2019-User"
+                      },
+                      {
+                        "id": "tags.office",
+                        "visible": false,
+                        "name": "Office"
+                      },
+                      {
+                        "id": "tags.office ",
+                        "visible": false,
+                        "name": "Office "
+                      },
+                      {
+                        "id": "tags.owner",
+                        "visible": false,
+                        "name": "Owner"
+                      },
+                      {
+                        "id": "tags.pgrmofc",
+                        "visible": false,
+                        "name": "PgrmOfc"
+                      },
+                      {
+                        "id": "tags.pii",
+                        "visible": false,
+                        "name": "PII"
+                      },
+                      {
+                        "id": "tags.poc",
+                        "visible": false,
+                        "name": "POC"
+                      },
+                      {
+                        "id": "tags.prgoffice",
+                        "visible": false,
+                        "name": "PrgOffice"
+                      },
+                      {
+                        "id": "tags.prgoffice ",
+                        "visible": false,
+                        "name": "PrgOffice "
+                      },
+                      {
+                        "id": "tags.priority",
+                        "visible": false,
+                        "name": "Priority"
+                      },
+                      {
+                        "id": "tags.priority ",
+                        "visible": false,
+                        "name": "Priority "
+                      },
+                      {
+                        "id": "tags.project",
+                        "visible": false,
+                        "name": "Project"
+                      },
+                      {
+                        "id": "tags.recoveryservice",
+                        "visible": false,
+                        "name": "RecoveryService"
+                      },
+                      {
+                        "id": "tags.resource owner",
+                        "visible": false,
+                        "name": "Resource Owner"
+                      },
+                      {
+                        "id": "tags.resourceowner",
+                        "visible": false,
+                        "name": "ResourceOwner"
+                      },
+                      {
+                        "id": "tags.resoureceowner",
+                        "visible": false,
+                        "name": "ResoureceOwner"
+                      },
+                      {
+                        "id": "tags.rsvaultbackup",
+                        "visible": false,
+                        "name": "RSVaultBackup"
+                      },
+                      {
+                        "id": "tags.sccm",
+                        "visible": false,
+                        "name": "sccm"
+                      },
+                      {
+                        "id": "tags.sql",
+                        "visible": false,
+                        "name": "SQL"
+                      },
+                      {
+                        "id": "tags.startstopvmversion",
+                        "visible": false,
+                        "name": "StartStopVMVersion"
+                      },
+                      {
+                        "id": "tags.system owner",
+                        "visible": false,
+                        "name": "System Owner"
+                      },
+                      {
+                        "id": "tags.systemowenr",
+                        "visible": false,
+                        "name": "SystemOwenr"
+                      },
+                      {
+                        "id": "tags.systemowner",
+                        "visible": false,
+                        "name": "SystemOwner"
+                      },
+                      {
+                        "id": "tags.tag",
+                        "visible": false,
+                        "name": "Tag"
+                      },
+                      {
+                        "id": "tags.use case",
+                        "visible": false,
+                        "name": "Use Case"
+                      },
+                      {
+                        "id": "tags.useridentity",
+                        "visible": false,
+                        "name": "userIdentity"
+                      },
+                      {
+                        "id": "tags.version",
+                        "visible": false,
+                        "name": "version"
+                      },
+                      {
+                        "id": "tags.virtual machine",
+                        "visible": false,
+                        "name": "Virtual Machine"
+                      },
+                      {
+                        "id": "tags.workspacename",
+                        "visible": false,
+                        "name": "workspaceName"
+                      },
+                      {
+                        "id": "tags.wvd image",
+                        "visible": false,
+                        "name": "WVD Image"
+                      },
+                      {
+                        "id": "tags.wvd status",
+                        "visible": false,
+                        "name": "WVD Status"
+                      },
+                      {
+                        "id": "tags.wvdimageversion",
+                        "visible": false,
+                        "name": "WVDImageVersion"
+                      },
+                      {
+                        "id": "tags.zscalerconnectorname",
+                        "visible": false,
+                        "name": "ZscalerConnectorName"
+                      }
+                    ],
+                    "gridColumnWidths": {
+                      "serverName": "80px"
+                    },
+                    "currentView": 1,
+                    "visualizationId": "type",
+                    "visualizationType": 8,
+                    "visualizationThreshold": 1
+                  },
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/HubsExtension/PartType/BrowseResourceTile"
+            }
+          },
+          "2": {
+            "position": {
+              "x": 2,
+              "y": 1,
+              "colSpan": 7,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "resourceTypeMode",
+                  "isOptional": true
+                },
+                {
+                  "name": "ComponentId",
+                  "isOptional": true
+                },
+                {
+                  "name": "Scope",
+                  "value": {
+                    "resourceIds": [
+                    
+                    ]
+                  },
+                  "isOptional": true
+                },
+                {
+                  "name": "PartId",
+                  "value": "784e42b3-b0ea-44d6-90b4-4a6e030049e2",
+                  "isOptional": true
+                },
+                {
+                  "name": "Version",
+                  "value": "2.0",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeRange",
+                  "value": "2022-04-06T20:40:45.000Z/2022-08-05T20:40:45.959Z",
+                  "isOptional": true
+                },
+                {
+                  "name": "DashboardId",
+                  "isOptional": true
+                },
+                {
+                  "name": "DraftRequestParameters",
+                  "isOptional": true
+                },
+                {
+                  "name": "Query",
+                  "value": "AzureActivity\n| where ResourceProvider == \"Microsoft SQL\"\n| summarize by OperationName\n",
+                  "isOptional": true
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsGrid",
+                  "isOptional": true
+                },
+                {
+                  "name": "SpecificChart",
+                  "isOptional": true
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics",
+                  "isOptional": true
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "aaa-cloud",
+                  "isOptional": true
+                },
+                {
+                  "name": "Dimensions",
+                  "isOptional": true
+                },
+                {
+                  "name": "LegendOptions",
+                  "isOptional": true
+                },
+                {
+                  "name": "IsQueryContainTimeRange",
+                  "value": false,
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/Microsoft_OperationsManagementSuite_Workspace/PartType/LogsDashboardPart",
+              "settings": {
+                "content": {
+                  "GridColumnsWidth": {
+                    "OperationName": "266px",
+                    "ActivityStatus": "120px",
+                    "count_": "78px",
+                    "Caller": "241px"
+                  },
+                  "Query": "AzureActivity\n| where ResourceProvider == \"Microsoft SQL\"\n| where ActivityStatus <> \"Failed\" and ActivityStatus <> \"Accepted\"\n| summarize count() by OperationName, Caller\n| sort by OperationName\n\n",
+                  "PartTitle": "Azure Portal Activity for SQL Databases",
+                  "PartSubTitle": "aaa"
+                }
+              },
+              "filters": {
+                "MsPortalFx_TimeRange": {
+                  "model": {
+                    "format": "local",
+                    "granularity": "auto",
+                    "relative": "30d"
+                  }
+                }
+              }
+            }
+          },
+          "3": {
+            "position": {
+              "x": 9,
+              "y": 1,
+              "colSpan": 11,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "resourceTypeMode",
+                  "isOptional": true
+                },
+                {
+                  "name": "ComponentId",
+                  "isOptional": true
+                },
+                {
+                  "name": "Scope",
+                  "value": {
+                    "resourceIds": [
+                      "/subscrip
+                    ]
+                  },
+                  "isOptional": true
+                },
+                {
+                  "name": "PartId",
+                  "value": "148d730a-0452-4e6a-bd71-a8cfb650ce57",
+                  "isOptional": true
+                },
+                {
+                  "name": "Version",
+                  "value": "2.0",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeRange",
+                  "value": "P30D",
+                  "isOptional": true
+                },
+                {
+                  "name": "DashboardId",
+                  "isOptional": true
+                },
+                {
+                  "name": "DraftRequestParameters",
+                  "isOptional": true
+                },
+                {
+                  "name": "Query",
+                  "value": "AzureDiagnostics\n| where Category == 'SQLSecurityAuditEvents'\n| where action_name_s has \"DATABASE AUTHENTICATION FAILED\"\n| parse additional_information_s with * \"error_code>\" Error_Code \"<\" *\n| parse additional_information_s with * \"error_state>\" Error_State \"<\" *\n| extend Reason=case(Error_Code == 40615, \"IP Blocked by Firewall\", Error_Code == 18456, \"Bad Password/Username\", Error_Code)\n| where Error_Code != 40615\n| summarize count() by session_server_principal_name_s, client_ip_s, bin(TimeGenerated, 1h)\n\n",
+                  "isOptional": true
+                },
+                {
+                  "name": "ControlType",
+                  "value": "FrameControlChart",
+                  "isOptional": true
+                },
+                {
+                  "name": "SpecificChart",
+                  "value": "Line",
+                  "isOptional": true
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics",
+                  "isOptional": true
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "aaa-cloud",
+                  "isOptional": true
+                },
+                {
+                  "name": "Dimensions",
+                  "value": {
+                    "xAxis": {
+                      "name": "TimeGenerated",
+                      "type": "datetime"
+                    },
+                    "yAxis": [
+                      {
+                        "name": "count_",
+                        "type": "long"
+                      }
+                    ],
+                    "splitBy": [
+                      {
+                        "name": "client_ip_s",
+                        "type": "string"
+                      }
+                    ],
+                    "aggregation": "Sum"
+                  },
+                  "isOptional": true
+                },
+                {
+                  "name": "LegendOptions",
+                  "value": {
+                    "isEnabled": true,
+                    "position": "Bottom"
+                  },
+                  "isOptional": true
+                },
+                {
+                  "name": "IsQueryContainTimeRange",
+                  "value": false,
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/Microsoft_OperationsManagementSuite_Workspace/PartType/LogsDashboardPart",
+              "settings": {
+                "content": {
+                  "Query": "AzureDiagnostics\n| where Category == 'SQLSecurityAuditEvents'\n| where action_name_s has \"DATABASE AUTHENTICATION FAILED\"\n| parse additional_information_s with * \"error_code>\" Error_Code \"<\" *\n| parse additional_information_s with * \"error_state>\" Error_State \"<\" *\n//| extend Reason=case(Error_Code == 40615, \"IP Blocked by Firewall\", Error_Code == 18456, \"Bad Password/Username\", Error_Code)\n| where Error_Code == 18456\n| summarize count() by session_server_principal_name_s, client_ip_s, bin(TimeGenerated, 1h)\n\n",
+                  "PartTitle": "Failed Logons (bad password/username)",
+                  "PartSubTitle": "aaa"
+                }
+              },
+              "filters": {
+                "MsPortalFx_TimeRange": {
+                  "model": {
+                    "format": "local",
+                    "granularity": "auto",
+                    "relative": "30d"
+                  }
+                }
+              }
+            }
+          },
+          "4": {
+            "position": {
+              "x": 0,
+              "y": 3,
+              "colSpan": 2,
+              "rowSpan": 2
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "resourceTypeMode",
+                  "isOptional": true
+                },
+                {
+                  "name": "ComponentId",
+                  "isOptional": true
+                },
+                {
+                  "name": "Scope",
+                  "value": {
+                    "resourceIds": [
+                      "/s
+                    ]
+                  },
+                  "isOptional": true
+                },
+                {
+                  "name": "PartId",
+                  "value": "130dc780-9da7-4054-8513-1ff112b2cb02",
+                  "isOptional": true
+                },
+                {
+                  "name": "Version",
+                  "value": "2.0",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeRange",
+                  "value": "P1D",
+                  "isOptional": true
+                },
+                {
+                  "name": "DashboardId",
+                  "isOptional": true
+                },
+                {
+                  "name": "DraftRequestParameters",
+                  "isOptional": true
+                },
+                {
+                  "name": "Query",
+                  "value": "AzureDiagnostics\n| where Category == 'SQLSecurityAuditEvents'\n| summarize count() by LogicalServerName_s, database_name_s\n| summarize Logging_Databases=count(database_name_s) \n\n",
+                  "isOptional": true
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsGrid",
+                  "isOptional": true
+                },
+                {
+                  "name": "SpecificChart",
+                  "isOptional": true
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics",
+                  "isOptional": true
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "ADFLogAnalyticsWorkspace",
+                  "isOptional": true
+                },
+                {
+                  "name": "Dimensions",
+                  "isOptional": true
+                },
+                {
+                  "name": "LegendOptions",
+                  "isOptional": true
+                },
+                {
+                  "name": "IsQueryContainTimeRange",
+                  "value": false,
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/Microsoft_OperationsManagementSuite_Workspace/PartType/LogsDashboardPart",
+              "settings": {
+                "content": {
+                  "PartTitle": "Logging Databases",
+                  "PartSubTitle": "aaa"
+                }
+              },
+              "filters": {
+                "MsPortalFx_TimeRange": {
+                  "model": {
+                    "format": "local",
+                    "granularity": "auto",
+                    "relative": "30d"
+                  }
+                }
+              }
+            }
+          },
+          "5": {
+            "position": {
+              "x": 0,
+              "y": 5,
+              "colSpan": 20,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "resourceTypeMode",
+                  "isOptional": true
+                },
+                {
+                  "name": "ComponentId",
+                  "isOptional": true
+                },
+                {
+                  "name": "Scope",
+                  "value": {
+                    "resourceIds": [
+                      "/
+                    ]
+                  },
+                  "isOptional": true
+                },
+                {
+                  "name": "PartId",
+                  "value": "8d3af840-e906-4539-915d-54808710e20d",
+                  "isOptional": true
+                },
+                {
+                  "name": "Version",
+                  "value": "2.0",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeRange",
+                  "value": "P1D",
+                  "isOptional": true
+                },
+                {
+                  "name": "DashboardId",
+                  "isOptional": true
+                },
+                {
+                  "name": "DraftRequestParameters",
+                  "isOptional": true
+                },
+                {
+                  "name": "Query",
+                  "value": "AzureDiagnostics\n| where Category == 'SQLSecurityAuditEvents'\n| where action_name_s has \"DATABASE AUTHENTICATION FAILED\"\n| summarize count() by session_server_principal_name_s, client_ip_s, bin(TimeGenerated, 1h)\n\n",
+                  "isOptional": true
+                },
+                {
+                  "name": "ControlType",
+                  "value": "FrameControlChart",
+                  "isOptional": true
+                },
+                {
+                  "name": "SpecificChart",
+                  "value": "Line",
+                  "isOptional": true
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics",
+                  "isOptional": true
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "aaa-cloud",
+                  "isOptional": true
+                },
+                {
+                  "name": "Dimensions",
+                  "value": {
+                    "xAxis": {
+                      "name": "TimeGenerated",
+                      "type": "datetime"
+                    },
+                    "yAxis": [
+                      {
+                        "name": "count_",
+                        "type": "long"
+                      }
+                    ],
+                    "splitBy": [
+                      {
+                        "name": "client_ip_s",
+                        "type": "string"
+                      }
+                    ],
+                    "aggregation": "Sum"
+                  },
+                  "isOptional": true
+                },
+                {
+                  "name": "LegendOptions",
+                  "value": {
+                    "isEnabled": false,
+                    "position": "Bottom"
+                  },
+                  "isOptional": true
+                },
+                {
+                  "name": "IsQueryContainTimeRange",
+                  "value": false,
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/Microsoft_OperationsManagementSuite_Workspace/PartType/LogsDashboardPart",
+              "settings": {
+                "content": {
+                  "SpecificChart": "StackedArea",
+                  "PartTitle": "Failed Authenitcation",
+                  "PartSubTitle": "aaa",
+                  "LegendOptions": {
+                    "isEnabled": true,
+                    "position": "Right"
+                  }
+                }
+              },
+              "filters": {
+                "MsPortalFx_TimeRange": {
+                  "model": {
+                    "format": "local",
+                    "granularity": "auto",
+                    "relative": "30d"
+                  }
+                }
+              }
+            }
+          },
+          "6": {
+            "position": {
+              "x": 0,
+              "y": 9,
+              "colSpan": 3,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "resourceTypeMode",
+                  "isOptional": true
+                },
+                {
+                  "name": "ComponentId",
+                  "isOptional": true
+                },
+                {
+                  "name": "Scope",
+                  "value": {
+                    "resourceIds": [
+                      "/s
+                    ]
+                  },
+                  "isOptional": true
+                },
+                {
+                  "name": "PartId",
+                  "value": "7ea7c02c-3413-4d7d-9213-fdd0a111430d",
+                  "isOptional": true
+                },
+                {
+                  "name": "Version",
+                  "value": "2.0",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeRange",
+                  "value": "P1D",
+                  "isOptional": true
+                },
+                {
+                  "name": "DashboardId",
+                  "isOptional": true
+                },
+                {
+                  "name": "DraftRequestParameters",
+                  "isOptional": true
+                },
+                {
+                  "name": "Query",
+                  "value": "AzureDiagnostics\n| where Category == 'SQLSecurityAuditEvents'\n|summarize count() by client_ip_s\n\n",
+                  "isOptional": true
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsGrid",
+                  "isOptional": true
+                },
+                {
+                  "name": "SpecificChart",
+                  "isOptional": true
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics",
+                  "isOptional": true
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "aaa-cloud",
+                  "isOptional": true
+                },
+                {
+                  "name": "Dimensions",
+                  "isOptional": true
+                },
+                {
+                  "name": "LegendOptions",
+                  "isOptional": true
+                },
+                {
+                  "name": "IsQueryContainTimeRange",
+                  "value": false,
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/Microsoft_OperationsManagementSuite_Workspace/PartType/LogsDashboardPart",
+              "settings": {
+                "content": {
+                  "GridColumnsWidth": {
+                    "client_ip_s": "116px",
+                    "count_": "85px"
+                  },
+                  "PartTitle": "Event Count by Client IP",
+                  "PartSubTitle": "aaa"
+                }
+              }
+            }
+          },
+          "7": {
+            "position": {
+              "x": 3,
+              "y": 9,
+              "colSpan": 17,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "resourceTypeMode",
+                  "isOptional": true
+                },
+                {
+                  "name": "ComponentId",
+                  "isOptional": true
+                },
+                {
+                  "name": "Scope",
+                  "value": {
+                    "resourceIds": [
+                      "/subsc
+                    ]
+                  },
+                  "isOptional": true
+                },
+                {
+                  "name": "PartId",
+                  "value": "65d2e9d1-f26d-48ec-8147-8f01ce1d3ee6",
+                  "isOptional": true
+                },
+                {
+                  "name": "Version",
+                  "value": "2.0",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeRange",
+                  "value": "P1D",
+                  "isOptional": true
+                },
+                {
+                  "name": "DashboardId",
+                  "isOptional": true
+                },
+                {
+                  "name": "DraftRequestParameters",
+                  "isOptional": true
+                },
+                {
+                  "name": "Query",
+                  "value": "AzureDiagnostics\n| where Category == 'SQLSecurityAuditEvents'\n| where action_name_s has \"DATABASE AUTHENTICATION\"\n| summarize by LogicalServerName_s, database_name_s, host_name_s, session_server_principal_name_s, client_ip_s, action_name_s\n\n",
+                  "isOptional": true
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsGrid",
+                  "isOptional": true
+                },
+                {
+                  "name": "SpecificChart",
+                  "isOptional": true
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics",
+                  "isOptional": true
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "aaa-cloud",
+                  "isOptional": true
+                },
+                {
+                  "name": "Dimensions",
+                  "isOptional": true
+                },
+                {
+                  "name": "LegendOptions",
+                  "isOptional": true
+                },
+                {
+                  "name": "IsQueryContainTimeRange",
+                  "value": false,
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/Microsoft_OperationsManagementSuite_Workspace/PartType/LogsDashboardPart",
+              "settings": {
+                "content": {
+                  "GridColumnsWidth": {
+                    "LogicalServerName_s": "163px",
+                    "session_server_principal_name_s": "227px",
+                    "action_name_s": "265px",
+                    "client_ip_s": "126px",
+                    "ResourceGroup": "192px",
+                    "user": "207px",
+                    "Error_Code": "104px",
+                    "Error_State": "110px",
+                    "Reason": "170.984px",
+                    "count_": "82.047px"
+                  },
+                  "Query": "AzureDiagnostics\n| where Category == 'SQLSecurityAuditEvents'\n| where action_name_s has \"DATABASE AUTHENTICATION\"\n| parse additional_information_s with * \"error_code>\" Error_Code \"<\" *\n| parse additional_information_s with * \"error_state>\" Error_State \"<\" *\n| extend Reason=case(Error_Code == 40615, \"IP Blocked by Firewall\", Error_Code == 18456, \"Bad Password/Username\", Error_Code == 47073, \"Public Network Access Denied\", Error_Code)\n| summarize count() by ResourceGroup, LogicalServerName_s, database_name_s, username_entered=session_server_principal_name_s, client_hostname=host_name_s, client_ip_s, action_name_s, Reason\n\n",
+                  "PartTitle": "User Authentication Succeeded/Failed",
+                  "PartSubTitle": "aaa"
+                }
+              }
+            }
+          },
+          "8": {
+            "position": {
+              "x": 0,
+              "y": 13,
+              "colSpan": 7,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "resourceTypeMode",
+                  "isOptional": true
+                },
+                {
+                  "name": "ComponentId",
+                  "isOptional": true
+                },
+                {
+                  "name": "Scope",
+                  "value": {
+                    "resourceIds": [
+                      "/su
+                    ]
+                  },
+                  "isOptional": true
+                },
+                {
+                  "name": "PartId",
+                  "value": "1aaa6ee4-9562-47c8-8576-0178f210236d",
+                  "isOptional": true
+                },
+                {
+                  "name": "Version",
+                  "value": "2.0",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeRange",
+                  "value": "P7D",
+                  "isOptional": true
+                },
+                {
+                  "name": "DashboardId",
+                  "isOptional": true
+                },
+                {
+                  "name": "DraftRequestParameters",
+                  "isOptional": true
+                },
+                {
+                  "name": "Query",
+                  "value": "let a = AzureDiagnostics\n| where Category == 'SQLSecurityAuditEvents'\n| where action_name_s has \"DATABASE AUTHENTICATION FAILED\"\n| summarize count() by session_server_principal_name_s, client_ip_s\n| sort by count_;\nlet b =AzureDiagnostics\n| where Category == 'SQLSecurityAuditEvents'\n| where action_name_s has \"DATABASE AUTHENTICATION SUCCEEDED\"\n| summarize count() by session_server_principal_name_s, client_ip_s\n| sort by count_;\na | join kind=fullouter b on client_ip_s\n| project User=iff(isempty(session_server_principal_name_s), session_server_principal_name_s1, session_server_principal_name_s),\n          IP=iff(isempty(client_ip_s), client_ip_s1, client_ip_s),\n          Failed=count_,\n          Succeeded=count_1\n| sort by Failed\n",
+                  "isOptional": true
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsGrid",
+                  "isOptional": true
+                },
+                {
+                  "name": "SpecificChart",
+                  "isOptional": true
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics",
+                  "isOptional": true
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "aaa-cloud",
+                  "isOptional": true
+                },
+                {
+                  "name": "Dimensions",
+                  "isOptional": true
+                },
+                {
+                  "name": "LegendOptions",
+                  "isOptional": true
+                },
+                {
+                  "name": "IsQueryContainTimeRange",
+                  "value": false,
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/Microsoft_OperationsManagementSuite_Workspace/PartType/LogsDashboardPart",
+              "settings": {
+                "content": {
+                  "GridColumnsWidth": {
+                    "User": "197px",
+                    "IP": "114px",
+                    "Failed": "94px",
+                    "Username_Entered": "221px"
+                  },
+                  "Query": "let a = AzureDiagnostics\n| where Category == 'SQLSecurityAuditEvents'\n| where action_name_s has \"DATABASE AUTHENTICATION FAILED\"\n| summarize count() by session_server_principal_name_s, client_ip_s\n| sort by count_;\nlet b =AzureDiagnostics\n| where Category == 'SQLSecurityAuditEvents'\n| where action_name_s has \"DATABASE AUTHENTICATION SUCCEEDED\"\n| summarize count() by session_server_principal_name_s, client_ip_s\n| sort by count_;\na | join kind=fullouter b on client_ip_s\n| project Username_Entered=iff(isempty(session_server_principal_name_s), session_server_principal_name_s1, session_server_principal_name_s),\n          IP=iff(isempty(client_ip_s), client_ip_s1, client_ip_s),\n          Failed=count_,\n          Succeeded=count_1\n| sort by Failed\n\n",
+                  "PartTitle": "Logon Attempts by User Name and User IP",
+                  "PartSubTitle": "aaa"
+                }
+              }
+            }
+          },
+          "9": {
+            "position": {
+              "x": 7,
+              "y": 13,
+              "colSpan": 13,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "resourceTypeMode",
+                  "isOptional": true
+                },
+                {
+                  "name": "ComponentId",
+                  "isOptional": true
+                },
+                {
+                  "name": "Scope",
+                  "value": {
+                    "resourceIds": [
+                      "/s
+                    ]
+                  },
+                  "isOptional": true
+                },
+                {
+                  "name": "PartId",
+                  "value": "118b7375-0ed5-4fc9-9950-f2e7c4142ef7",
+                  "isOptional": true
+                },
+                {
+                  "name": "Version",
+                  "value": "2.0",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeRange",
+                  "value": "P1D",
+                  "isOptional": true
+                },
+                {
+                  "name": "DashboardId",
+                  "isOptional": true
+                },
+                {
+                  "name": "DraftRequestParameters",
+                  "isOptional": true
+                },
+                {
+                  "name": "Query",
+                  "value": "AzureDiagnostics\n| where Category == 'SQLSecurityAuditEvents'\n| summarize by LogicalServerName_s, database_name_s, statement_s, application_name_s, host_name_s, session_server_principal_name_s, client_ip_s, action_name_s\n| where isnotempty(statement_s)\n\n",
+                  "isOptional": true
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsGrid",
+                  "isOptional": true
+                },
+                {
+                  "name": "SpecificChart",
+                  "isOptional": true
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics",
+                  "isOptional": true
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "aaa-cloud",
+                  "isOptional": true
+                },
+                {
+                  "name": "Dimensions",
+                  "isOptional": true
+                },
+                {
+                  "name": "LegendOptions",
+                  "isOptional": true
+                },
+                {
+                  "name": "IsQueryContainTimeRange",
+                  "value": false,
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/Microsoft_OperationsManagementSuite_Workspace/PartType/LogsDashboardPart",
+              "settings": {
+                "content": {
+                  "GridColumnsWidth": {
+                    "statement_s": "525px"
+                  },
+                  "Query": "AzureDiagnostics\n| where Category == 'SQLSecurityAuditEvents'\n| project TimeGenerated, statement_s, LogicalServerName_s, database_name_s, application_name_s, host_name_s, session_server_principal_name_s, client_ip_s, action_name_s\n| where isnotempty(statement_s)\n\n",
+                  "PartTitle": "Queries Executed",
+                  "PartSubTitle": "aaa"
+                }
+              }
+            }
+          },
+          "10": {
+            "position": {
+              "x": 0,
+              "y": 17,
+              "colSpan": 20,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "resourceTypeMode",
+                  "isOptional": true
+                },
+                {
+                  "name": "ComponentId",
+                  "isOptional": true
+                },
+                {
+                  "name": "Scope",
+                  "value": {
+                    "resourceIds": [
+                      "/
+                    ]
+                  },
+                  "isOptional": true
+                },
+                {
+                  "name": "PartId",
+                  "value": "128fc932-5bd5-4692-b037-54a79e3b94e2",
+                  "isOptional": true
+                },
+                {
+                  "name": "Version",
+                  "value": "2.0",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeRange",
+                  "value": "P1D",
+                  "isOptional": true
+                },
+                {
+                  "name": "DashboardId",
+                  "isOptional": true
+                },
+                {
+                  "name": "DraftRequestParameters",
+                  "isOptional": true
+                },
+                {
+                  "name": "Query",
+                  "value": "AzureDiagnostics\n| where Category == 'SQLSecurityAuditEvents'\n| summarize count() by LogicalServerName_s, database_name_s\n| sort by count_\n",
+                  "isOptional": true
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsGrid",
+                  "isOptional": true
+                },
+                {
+                  "name": "SpecificChart",
+                  "isOptional": true
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics",
+                  "isOptional": true
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "ADFLogAnalyticsWorkspace",
+                  "isOptional": true
+                },
+                {
+                  "name": "Dimensions",
+                  "isOptional": true
+                },
+                {
+                  "name": "LegendOptions",
+                  "isOptional": true
+                },
+                {
+                  "name": "IsQueryContainTimeRange",
+                  "value": false,
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/Microsoft_OperationsManagementSuite_Workspace/PartType/LogsDashboardPart",
+              "settings": {
+                "content": {
+                  "GridColumnsWidth": {
+                    "LogicalServerName_s": "172px"
+                  },
+                  "Query": "AzureDiagnostics\n| where Category == 'SQLSecurityAuditEvents'\n| summarize count() by LogicalServerName_s, database_name_s, bin(TimeGenerated, 1h)\n| sort by count_\n\n",
+                  "ControlType": "FrameControlChart",
+                  "SpecificChart": "StackedArea",
+                  "PartTitle": "Events Count by Database Server",
+                  "PartSubTitle": "aaa",
+                  "Dimensions": {
+                    "xAxis": {
+                      "name": "TimeGenerated",
+                      "type": "datetime"
+                    },
+                    "yAxis": [
+                      {
+                        "name": "count_",
+                        "type": "long"
+                      }
+                    ],
+                    "splitBy": [
+                      {
+                        "name": "LogicalServerName_s",
+                        "type": "string"
+                      }
+                    ],
+                    "aggregation": "Sum"
+                  },
+                  "LegendOptions": {
+                    "isEnabled": true,
+                    "position": "Bottom"
+                  }
+                }
+              }
+            }
+          },
+          "11": {
+            "position": {
+              "x": 0,
+              "y": 21,
+              "colSpan": 20,
+              "rowSpan": 1
+            },
+            "metadata": {
+              "inputs": [],
+              "type": "Extension/HubsExtension/PartType/MarkdownPart",
+              "settings": {
+                "content": {
+                  "settings": {
+                    "content": "<div style=\"font-size:300%;\">Microsoft SQL Server</div>",
+                    "title": "",
+                    "subtitle": "",
+                    "markdownSource": 1
+                  }
+                }
+              }
+            }
+          },
+          "12": {
+            "position": {
+              "x": 0,
+              "y": 22,
+              "colSpan": 2,
+              "rowSpan": 2
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "resourceTypeMode",
+                  "isOptional": true
+                },
+                {
+                  "name": "ComponentId",
+                  "isOptional": true
+                },
+                {
+                  "name": "Scope",
+                  "value": {
+                    "resourceIds": [
+                      "/s
+                    ]
+                  },
+                  "isOptional": true
+                },
+                {
+                  "name": "PartId",
+                  "value": "24a796ec-bd3d-4a30-800c-ceadc7e430ed",
+                  "isOptional": true
+                },
+                {
+                  "name": "Version",
+                  "value": "2.0",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeRange",
+                  "value": "P7D",
+                  "isOptional": true
+                },
+                {
+                  "name": "DashboardId",
+                  "isOptional": true
+                },
+                {
+                  "name": "DraftRequestParameters",
+                  "isOptional": true
+                },
+                {
+                  "name": "Query",
+                  "value": "Event\n| where Source contains \"SQL\"\n| summarize Logging_Servers=dcount(Computer)\n\n",
+                  "isOptional": true
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsGrid",
+                  "isOptional": true
+                },
+                {
+                  "name": "SpecificChart",
+                  "isOptional": true
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics",
+                  "isOptional": true
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "aaa-cloud",
+                  "isOptional": true
+                },
+                {
+                  "name": "Dimensions",
+                  "isOptional": true
+                },
+                {
+                  "name": "LegendOptions",
+                  "isOptional": true
+                },
+                {
+                  "name": "IsQueryContainTimeRange",
+                  "value": false,
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/Microsoft_OperationsManagementSuite_Workspace/PartType/LogsDashboardPart",
+              "settings": {
+                "content": {
+                  "PartTitle": "Logging Servers",
+                  "PartSubTitle": "aaa"
+                }
+              },
+              "filters": {
+                "MsPortalFx_TimeRange": {
+                  "model": {
+                    "format": "local",
+                    "granularity": "auto",
+                    "relative": "30d"
+                  }
+                }
+              }
+            }
+          },
+          "13": {
+            "position": {
+              "x": 6,
+              "y": 22,
+              "colSpan": 5,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "resourceTypeMode",
+                  "isOptional": true
+                },
+                {
+                  "name": "ComponentId",
+                  "isOptional": true
+                },
+                {
+                  "name": "Scope",
+                  "value": {
+                    "resourceIds": [
+                      "/
+                    ]
+                  },
+                  "isOptional": true
+                },
+                {
+                  "name": "PartId",
+                  "value": "111fc197-9797-40b3-928d-85d588834988",
+                  "isOptional": true
+                },
+                {
+                  "name": "Version",
+                  "value": "2.0",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeRange",
+                  "value": "P1D",
+                  "isOptional": true
+                },
+                {
+                  "name": "DashboardId",
+                  "isOptional": true
+                },
+                {
+                  "name": "DraftRequestParameters",
+                  "isOptional": true
+                },
+                {
+                  "name": "Query",
+                  "value": "Event\n| where Source has \"SQL\"\n| where EventLevelName <> \"Information\"\n| summarize count(EventLevelName) by Computer, EventLevelName\n\n",
+                  "isOptional": true
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsGrid",
+                  "isOptional": true
+                },
+                {
+                  "name": "SpecificChart",
+                  "isOptional": true
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics",
+                  "isOptional": true
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "ADFLogAnalyticsWorkspace",
+                  "isOptional": true
+                },
+                {
+                  "name": "Dimensions",
+                  "isOptional": true
+                },
+                {
+                  "name": "LegendOptions",
+                  "isOptional": true
+                },
+                {
+                  "name": "IsQueryContainTimeRange",
+                  "value": false,
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/Microsoft_OperationsManagementSuite_Workspace/PartType/LogsDashboardPart",
+              "settings": {
+                "content": {
+                  "GridColumnsWidth": {
+                    "Computer": "187px",
+                    "EventLevelName": "136px",
+                    "count_EventLevelName": "147px"
+                  },
+                  "Query": "Event\n| where Source contains \"SQL\"\n| where EventLevelName <> \"Information\" and EventLevelName <> \"Audit Success\"\n| summarize count(EventLevelName) by Computer, EventLevelName\n| sort by count_EventLevelName\n\n",
+                  "PartTitle": "Count of Errors and Warnings by Server",
+                  "PartSubTitle": "aaa"
+                }
+              }
+            }
+          },
+          "14": {
+            "position": {
+              "x": 11,
+              "y": 22,
+              "colSpan": 9,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "resourceTypeMode",
+                  "isOptional": true
+                },
+                {
+                  "name": "ComponentId",
+                  "isOptional": true
+                },
+                {
+                  "name": "Scope",
+                  "value": {
+                    "resourceIds": [
+                      "/subs
+                    ]
+                  },
+                  "isOptional": true
+                },
+                {
+                  "name": "PartId",
+                  "value": "9d58fd1b-0463-4eed-9693-037f0c2b5396",
+                  "isOptional": true
+                },
+                {
+                  "name": "Version",
+                  "value": "2.0",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeRange",
+                  "value": "P1D",
+                  "isOptional": true
+                },
+                {
+                  "name": "DashboardId",
+                  "isOptional": true
+                },
+                {
+                  "name": "DraftRequestParameters",
+                  "isOptional": true
+                },
+                {
+                  "name": "Query",
+                  "value": "Event\n| where Source has \"SQL\"\n| where Source == \"SQL_Query\"\n| summarize by TimeGenerated, Computer, UserName, [\"Query Executed\"]=RenderedDescription\n",
+                  "isOptional": true
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsGrid",
+                  "isOptional": true
+                },
+                {
+                  "name": "SpecificChart",
+                  "isOptional": true
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics",
+                  "isOptional": true
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "ADFLogAnalyticsWorkspace",
+                  "isOptional": true
+                },
+                {
+                  "name": "Dimensions",
+                  "isOptional": true
+                },
+                {
+                  "name": "LegendOptions",
+                  "isOptional": true
+                },
+                {
+                  "name": "IsQueryContainTimeRange",
+                  "value": false,
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/Microsoft_OperationsManagementSuite_Workspace/PartType/LogsDashboardPart",
+              "settings": {
+                "content": {
+                  "GridColumnsWidth": {
+                    "UserName": "104px",
+                    "Computer": "172px",
+                    "Query Executed": "769px"
+                  },
+                  "Query": "Event\n| where Source contains \"SQL\"\n| where Source == \"SQL_Query\"\n| summarize by TimeGenerated, Computer, UserName, [\"Query Executed\"]=RenderedDescription\n\n",
+                  "PartTitle": "Queries Executed",
+                  "PartSubTitle": "aaa"
+                }
+              }
+            }
+          },
+          "15": {
+            "position": {
+              "x": 0,
+              "y": 24,
+              "colSpan": 6,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "resourceTypeMode",
+                  "isOptional": true
+                },
+                {
+                  "name": "ComponentId",
+                  "isOptional": true
+                },
+                {
+                  "name": "Scope",
+                  "value": {
+                    "resourceIds": [
+                      "/s
+                    ]
+                  },
+                  "isOptional": true
+                },
+                {
+                  "name": "PartId",
+                  "value": "6e566d08-b5f6-488a-9125-f090684e5d6a",
+                  "isOptional": true
+                },
+                {
+                  "name": "Version",
+                  "value": "2.0",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeRange",
+                  "value": "P1D",
+                  "isOptional": true
+                },
+                {
+                  "name": "DashboardId",
+                  "isOptional": true
+                },
+                {
+                  "name": "DraftRequestParameters",
+                  "isOptional": true
+                },
+                {
+                  "name": "Query",
+                  "value": "Event\n| where Source has \"SQL\"\n| summarize Count=count() by EventLevelName\n",
+                  "isOptional": true
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsGrid",
+                  "isOptional": true
+                },
+                {
+                  "name": "SpecificChart",
+                  "isOptional": true
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics",
+                  "isOptional": true
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "ADFLogAnalyticsWorkspace",
+                  "isOptional": true
+                },
+                {
+                  "name": "Dimensions",
+                  "isOptional": true
+                },
+                {
+                  "name": "LegendOptions",
+                  "isOptional": true
+                },
+                {
+                  "name": "IsQueryContainTimeRange",
+                  "value": false,
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/Microsoft_OperationsManagementSuite_Workspace/PartType/LogsDashboardPart",
+              "settings": {
+                "content": {
+                  "Query": "Event\n| where Source contains \"\" \"SQL\"\n| summarize Count=count() by EventLevelName\n\n",
+                  "ControlType": "FrameControlChart",
+                  "SpecificChart": "Pie",
+                  "PartTitle": "Event Count by Severity",
+                  "PartSubTitle": "aaa",
+                  "Dimensions": {
+                    "xAxis": {
+                      "name": "EventLevelName",
+                      "type": "string"
+                    },
+                    "yAxis": [
+                      {
+                        "name": "Count",
+                        "type": "long"
+                      }
+                    ],
+                    "splitBy": [],
+                    "aggregation": "Sum"
+                  },
+                  "LegendOptions": {
+                    "isEnabled": false,
+                    "position": "Bottom"
+                  }
+                }
+              }
+            }
+          },
+          "16": {
+            "position": {
+              "x": 0,
+              "y": 28,
+              "colSpan": 19,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "resourceTypeMode",
+                  "isOptional": true
+                },
+                {
+                  "name": "ComponentId",
+                  "isOptional": true
+                },
+                {
+                  "name": "Scope",
+                  "value": {
+                    "resourceIds": [
+                      "/su
+                    ]
+                  },
+                  "isOptional": true
+                },
+                {
+                  "name": "PartId",
+                  "value": "55972949-8eb1-424e-b128-ec306902d690",
+                  "isOptional": true
+                },
+                {
+                  "name": "Version",
+                  "value": "2.0",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeRange",
+                  "value": "P7D",
+                  "isOptional": true
+                },
+                {
+                  "name": "DashboardId",
+                  "isOptional": true
+                },
+                {
+                  "name": "DraftRequestParameters",
+                  "isOptional": true
+                },
+                {
+                  "name": "Query",
+                  "value": "Event\n| where Source contains \"SQL\"\n| where RenderedDescription startswith \"Login failed\"\n| where UserName !startswith \"NT \" and UserName !contains \"$\" and UserName != \"N/A\"\n| summarize count() by UserName, bin(TimeGenerated, 1h)\n\n",
+                  "isOptional": true
+                },
+                {
+                  "name": "ControlType",
+                  "value": "FrameControlChart",
+                  "isOptional": true
+                },
+                {
+                  "name": "SpecificChart",
+                  "value": "StackedArea",
+                  "isOptional": true
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics",
+                  "isOptional": true
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "aaa-cloud",
+                  "isOptional": true
+                },
+                {
+                  "name": "Dimensions",
+                  "value": {
+                    "xAxis": {
+                      "name": "TimeGenerated",
+                      "type": "datetime"
+                    },
+                    "yAxis": [
+                      {
+                        "name": "count_",
+                        "type": "long"
+                      }
+                    ],
+                    "splitBy": [
+                      {
+                        "name": "UserName",
+                        "type": "string"
+                      }
+                    ],
+                    "aggregation": "Sum"
+                  },
+                  "isOptional": true
+                },
+                {
+                  "name": "LegendOptions",
+                  "value": {
+                    "isEnabled": true,
+                    "position": "Bottom"
+                  },
+                  "isOptional": true
+                },
+                {
+                  "name": "IsQueryContainTimeRange",
+                  "value": false,
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/Microsoft_OperationsManagementSuite_Workspace/PartType/LogsDashboardPart",
+              "settings": {
+                "content": {
+                  "PartTitle": "Failed Logons",
+                  "PartSubTitle": "aaa"
+                }
+              }
+            }
+          },
+          "17": {
+            "position": {
+              "x": 0,
+              "y": 32,
+              "colSpan": 19,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "resourceTypeMode",
+                  "isOptional": true
+                },
+                {
+                  "name": "ComponentId",
+                  "isOptional": true
+                },
+                {
+                  "name": "Scope",
+                  "value": {
+                    "resourceIds": [
+                      "/su
+                    ]
+                  },
+                  "isOptional": true
+                },
+                {
+                  "name": "PartId",
+                  "value": "963f29f6-09bb-4e0c-bb70-89e60d13ae28",
+                  "isOptional": true
+                },
+                {
+                  "name": "Version",
+                  "value": "2.0",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeRange",
+                  "value": "P1D",
+                  "isOptional": true
+                },
+                {
+                  "name": "DashboardId",
+                  "isOptional": true
+                },
+                {
+                  "name": "DraftRequestParameters",
+                  "isOptional": true
+                },
+                {
+                  "name": "Query",
+                  "value": "Event\n| where Source has \"SQL\"\n| summarize Count=count() by Computer\n| sort by Count\n",
+                  "isOptional": true
+                },
+                {
+                  "name": "ControlType",
+                  "value": "FrameControlChart",
+                  "isOptional": true
+                },
+                {
+                  "name": "SpecificChart",
+                  "value": "StackedBar",
+                  "isOptional": true
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics",
+                  "isOptional": true
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "ADFLogAnalyticsWorkspace",
+                  "isOptional": true
+                },
+                {
+                  "name": "Dimensions",
+                  "value": {
+                    "xAxis": {
+                      "name": "Computer",
+                      "type": "string"
+                    },
+                    "yAxis": [
+                      {
+                        "name": "Count",
+                        "type": "long"
+                      }
+                    ],
+                    "splitBy": [],
+                    "aggregation": "Sum"
+                  },
+                  "isOptional": true
+                },
+                {
+                  "name": "LegendOptions",
+                  "value": {
+                    "isEnabled": true,
+                    "position": "Bottom"
+                  },
+                  "isOptional": true
+                },
+                {
+                  "name": "IsQueryContainTimeRange",
+                  "value": false,
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/Microsoft_OperationsManagementSuite_Workspace/PartType/LogsDashboardPart",
+              "settings": {
+                "content": {
+                  "GridColumnsWidth": {
+                    "Computer": "187px"
+                  },
+                  "Query": "Event\n| where Source contains \"SQL\"\n| summarize Count=count() by Computer, bin(TimeGenerated, 1h)\n| sort by Count\n\n",
+                  "ControlType": "FrameControlChart",
+                  "SpecificChart": "StackedArea",
+                  "PartTitle": "Event Count by Server",
+                  "PartSubTitle": "aaa",
+                  "Dimensions": {
+                    "xAxis": {
+                      "name": "TimeGenerated",
+                      "type": "datetime"
+                    },
+                    "yAxis": [
+                      {
+                        "name": "Count",
+                        "type": "long"
+                      }
+                    ],
+                    "splitBy": [
+                      {
+                        "name": "Computer",
+                        "type": "string"
+                      }
+                    ],
+                    "aggregation": "Sum"
+                  }
+                }
+              }
+            }
+          },
+          "18": {
+            "position": {
+              "x": 0,
+              "y": 36,
+              "colSpan": 15,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "resourceTypeMode",
+                  "isOptional": true
+                },
+                {
+                  "name": "ComponentId",
+                  "isOptional": true
+                },
+                {
+                  "name": "Scope",
+                  "value": {
+                    "resourceIds": [
+                      "/
+                    ]
+                  },
+                  "isOptional": true
+                },
+                {
+                  "name": "PartId",
+                  "value": "11b4be28-6faa-48f6-b443-db394a1261b5",
+                  "isOptional": true
+                },
+                {
+                  "name": "Version",
+                  "value": "2.0",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeRange",
+                  "value": "P7D",
+                  "isOptional": true
+                },
+                {
+                  "name": "DashboardId",
+                  "isOptional": true
+                },
+                {
+                  "name": "DraftRequestParameters",
+                  "isOptional": true
+                },
+                {
+                  "name": "Query",
+                  "value": "Event\n| where Source contains \"SQL\"\n| where RenderedDescription startswith \"Login\"\n| parse RenderedDescription with * \"Login \" Authentication \"for user '\" User \"'. \" Detail \". [CLIENT: \" UserIP \"]\" *\n| summarize count() by Computer, UserName, Authentication, UserIP, Detail\n| sort by count_\n\n",
+                  "isOptional": true
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsGrid",
+                  "isOptional": true
+                },
+                {
+                  "name": "SpecificChart",
+                  "isOptional": true
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics",
+                  "isOptional": true
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "aaa-cloud",
+                  "isOptional": true
+                },
+                {
+                  "name": "Dimensions",
+                  "isOptional": true
+                },
+                {
+                  "name": "LegendOptions",
+                  "isOptional": true
+                },
+                {
+                  "name": "IsQueryContainTimeRange",
+                  "value": false,
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/Microsoft_OperationsManagementSuite_Workspace/PartType/LogsDashboardPart",
+              "settings": {
+                "content": {
+                  "GridColumnsWidth": {
+                    "Computer": "214px",
+                    "UserName": "274px",
+                    "Detail": "408px",
+                    "count_": "85px"
+                  },
+                  "PartTitle": "User Authentication Succeeded/Failed",
+                  "PartSubTitle": "aaa"
+                }
+              }
+            }
+          },
+          "19": {
+            "position": {
+              "x": 0,
+              "y": 40,
+              "colSpan": 8,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "resourceTypeMode",
+                  "isOptional": true
+                },
+                {
+                  "name": "ComponentId",
+                  "isOptional": true
+                },
+                {
+                  "name": "Scope",
+                  "value": {
+                    "resourceIds": [
+                      "/s
+                    ]
+                  },
+                  "isOptional": true
+                },
+                {
+                  "name": "PartId",
+                  "value": "536380dc-c1eb-453e-a94d-18fa810972fd",
+                  "isOptional": true
+                },
+                {
+                  "name": "Version",
+                  "value": "2.0",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeRange",
+                  "value": "P7D",
+                  "isOptional": true
+                },
+                {
+                  "name": "DashboardId",
+                  "isOptional": true
+                },
+                {
+                  "name": "DraftRequestParameters",
+                  "isOptional": true
+                },
+                {
+                  "name": "Query",
+                  "value": "Event\n| where Source contains \"SQL\"\n| where RenderedDescription startswith \"Login Failed for user\"\n| parse RenderedDescription with * \"user '\" User \"'. Reason:\" Reason \". [CLIENT: \" UserIP \"]\" *\n| where Reason == \" Could not find a login matching the name provided\"\n| summarize count() by UserName, UserIP, Reason\n| sort by count_\n\n",
+                  "isOptional": true
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsGrid",
+                  "isOptional": true
+                },
+                {
+                  "name": "SpecificChart",
+                  "isOptional": true
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics",
+                  "isOptional": true
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "aaa-cloud",
+                  "isOptional": true
+                },
+                {
+                  "name": "Dimensions",
+                  "isOptional": true
+                },
+                {
+                  "name": "LegendOptions",
+                  "isOptional": true
+                },
+                {
+                  "name": "IsQueryContainTimeRange",
+                  "value": false,
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/Microsoft_OperationsManagementSuite_Workspace/PartType/LogsDashboardPart",
+              "settings": {
+                "content": {
+                  "GridColumnsWidth": {
+                    "UserIP": "122px",
+                    "Reason": "152px",
+                    "UserName": "266px"
+                  },
+                  "PartTitle": "User entered non-existing username (Failed Logons)",
+                  "PartSubTitle": "aaa"
+                }
+              }
+            }
+          },
+          "20": {
+            "position": {
+              "x": 8,
+              "y": 40,
+              "colSpan": 6,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "resourceTypeMode",
+                  "isOptional": true
+                },
+                {
+                  "name": "ComponentId",
+                  "isOptional": true
+                },
+                {
+                  "name": "Scope",
+                  "value": {
+                    "resourceIds": [
+                      "/su
+                    ]
+                  },
+                  "isOptional": true
+                },
+                {
+                  "name": "PartId",
+                  "value": "623a27d6-1933-4a8c-8b0a-21b918123b1d",
+                  "isOptional": true
+                },
+                {
+                  "name": "Version",
+                  "value": "2.0",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeRange",
+                  "value": "P1D",
+                  "isOptional": true
+                },
+                {
+                  "name": "DashboardId",
+                  "isOptional": true
+                },
+                {
+                  "name": "DraftRequestParameters",
+                  "isOptional": true
+                },
+                {
+                  "name": "Query",
+                  "value": "let a = Event\n| where Source contains \"SQL\"\n| where RenderedDescription startswith \"Login failed\"\n| summarize count() by UserName;\nlet b = Event\n| where Source contains \"SQL\"\n| where RenderedDescription startswith \"Login succeeded\"\n| summarize count() by UserName;\na | join kind=fullouter b on UserName\n| project User=iff(isempty(UserName), UserName1, UserName),\n          Failed=count_,\n          Succeeded=count_1\n| sort by Failed\n\n",
+                  "isOptional": true
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsGrid",
+                  "isOptional": true
+                },
+                {
+                  "name": "SpecificChart",
+                  "isOptional": true
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics",
+                  "isOptional": true
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "aaa-cloud",
+                  "isOptional": true
+                },
+                {
+                  "name": "Dimensions",
+                  "isOptional": true
+                },
+                {
+                  "name": "LegendOptions",
+                  "isOptional": true
+                },
+                {
+                  "name": "IsQueryContainTimeRange",
+                  "value": false,
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/Microsoft_OperationsManagementSuite_Workspace/PartType/LogsDashboardPart",
+              "settings": {
+                "content": {
+                  "GridColumnsWidth": {
+                    "User": "284px",
+                    "Failed": "92px",
+                    "Succeeded": "100px"
+                  },
+                  "PartTitle": "Logon Attempts by User",
+                  "PartSubTitle": "aaa"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "model": {
+        "timeRange": {
+          "value": {
+            "relative": {
+              "duration": 24,
+              "timeUnit": 1
+            }
+          },
+          "type": "MsPortalFx.Composition.Configuration.ValueTypes.TimeRange"
+        },
+        "filterLocale": {
+          "value": "en-us"
+        },
+        "filters": {
+          "value": {
+            "MsPortalFx_TimeRange": {
+              "model": {
+                "format": "local",
+                "granularity": "auto",
+                "relative": "7d"
+              },
+              "displayCache": {
+                "name": "Local Time",
+                "value": "Past 7 days"
+              },
+              "filteredPartIds": [
+                "StartboardPart-LogsDashboardPart-ee9fe474-6d85-42ce-8d70-6189edf21037",
+                "StartboardPart-LogsDashboardPart-ee9fe474-6d85-42ce-8d70-6189edf21039",
+                "StartboardPart-LogsDashboardPart-ee9fe474-6d85-42ce-8d70-6189edf2103b",
+                "StartboardPart-LogsDashboardPart-ee9fe474-6d85-42ce-8d70-6189edf2103d",
+                "StartboardPart-LogsDashboardPart-ee9fe474-6d85-42ce-8d70-6189edf2103f",
+                "StartboardPart-LogsDashboardPart-ee9fe474-6d85-42ce-8d70-6189edf21041",
+                "StartboardPart-LogsDashboardPart-ee9fe474-6d85-42ce-8d70-6189edf21043",
+                "StartboardPart-LogsDashboardPart-ee9fe474-6d85-42ce-8d70-6189edf21045",
+                "StartboardPart-LogsDashboardPart-ee9fe474-6d85-42ce-8d70-6189edf21047",
+                "StartboardPart-LogsDashboardPart-ee9fe474-6d85-42ce-8d70-6189edf2104b",
+                "StartboardPart-LogsDashboardPart-ee9fe474-6d85-42ce-8d70-6189edf2104d",
+                "StartboardPart-LogsDashboardPart-ee9fe474-6d85-42ce-8d70-6189edf2104f",
+                "StartboardPart-LogsDashboardPart-ee9fe474-6d85-42ce-8d70-6189edf21051",
+                "StartboardPart-LogsDashboardPart-ee9fe474-6d85-42ce-8d70-6189edf21053",
+                "StartboardPart-LogsDashboardPart-ee9fe474-6d85-42ce-8d70-6189edf21055",
+                "StartboardPart-LogsDashboardPart-ee9fe474-6d85-42ce-8d70-6189edf21057",
+                "StartboardPart-LogsDashboardPart-ee9fe474-6d85-42ce-8d70-6189edf21059",
+                "StartboardPart-LogsDashboardPart-ee9fe474-6d85-42ce-8d70-6189edf2105b"
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "name": "Databases - Security",
+  "type": "Microsoft.Portal/dashboards",
+  "location": "INSERT LOCATION",
+  "tags": {
+    "hidden-title": "Databases - Security"
+  },
+  "apiVersion": "2015-08-01-preview"
+}
