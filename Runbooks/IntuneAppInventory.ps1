@@ -1,3 +1,5 @@
+# This runbook pulls the Intune Discovered Apps from Graph API and uploads them to an Azure storage account table
+
 # === Get secrets from automation variables ===
 $global:tenantId = Get-AutomationVariable -Name 'tenantId'
 $global:clientId = Get-AutomationVariable -Name 'clientId'
