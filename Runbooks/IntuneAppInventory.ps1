@@ -82,7 +82,7 @@ function Invoke-GraphGet {
    
     while ($retryCount -lt $maxRetries) {
         try{
-            return (Invoke-RestMethod -Uri $Uri -Headers $headers -Method Get).value
+            return (Invoke-RestMethod -Uri $Uri -Headers $headers -Method Get)
         } catch {
             if ($_.Exception.Response -and $_.Exception.Response.StatusCode.Value__ -eq 429) {
                 $retryAfter = $_.Exception.Response.Headers["Retry-After"]
@@ -106,13 +106,13 @@ function Invoke-GraphGet {
 function Get-NextLink {
     $uri = Get-AutomationVariable -Name 'DetectedAppsNextLink'
     if (-not $uri) {
-        $uri = 'https://graph.microsoft.com/v1.0/deviceManagement/detectedApps?$top=10'
+        $uri = 'https://graph.microsoft.com/v1.0/deviceManagement/detectedApps?$top=500'
     }
     return $uri
 }
 
 function Set-NextLink ($nextLink) {
-    if ($nextLink) {
+    if ($null -ne $nextLink -and [string]::IsNullOrWhiteSpace([string]$nextLink) -eq $false) {
         Set-AutomationVariable -Name 'DetectedAppsNextLink' -Value $nextLink
     } else {
         Set-AutomationVariable -Name 'DetectedAppsNextLink' -Value ""
@@ -125,15 +125,15 @@ $appsProcessed = 0
 
     $detectedAppValues = Invoke-GraphGet $uri
 
-    foreach ($detectedAppValue in $detectedAppValues) {
+    foreach ($detectedAppValue in $detectedAppValues.value) {
         $id = $detectedAppValue.id
         $appDevices = Invoke-GraphGet "https://graph.microsoft.com/v1.0/deviceManagement/detectedApps/$id/managedDevices"
         if (-not $appDevices) {
             Write-Warning "Skipping app $id"
             continue
         }
-
-        foreach ($appDevice in $appDevices) {
+        
+        foreach ($appDevice in $appDevices.value) {
             $partitionKey = "DefaultPartitionKey"
             $rowKey       = [guid]::NewGuid().ToString()
             $properties   = @{  
@@ -170,11 +170,12 @@ $appsProcessed = 0
         $appsProcessed++
     }
 
-    $uri = $detectedAppValues.'@odata.nextLink'
-    Set-NextLink $uri
+    $nexturi = $detectedAppValues."@odata.nextLink"
+    Set-NextLink $nexturi
+    Write-Output "Setting Next Link: $nexturi"
     Start-Sleep -Seconds 1
 
-    if ($uri) {
+    if ($nexturi) {
         Write-Host "More pages remain. Scheduling next run..."
         Start-AzAutomationRunbook `
             -AutomationAccountName $automationAccountName `
@@ -183,10 +184,9 @@ $appsProcessed = 0
         break
     }
 
-if (-not $uri) {
+if (-not $nexturi) {
     Write-Host "All apps processed. Table complete."
     Set-NextLink ""
 }
 
 Write-Host "Upload complete. Processed $appsProcessed apps."
-
