@@ -1,3 +1,5 @@
+# This runbook attempts to enable Encryption-At-Host on Azure VMs and is triggered by a webhook
+
 param (
     [Parameter(Mandatory=$false)]
     [object] $WebhookData
