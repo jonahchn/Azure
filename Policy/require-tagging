@@ -1,0 +1,49 @@
+{
+  "mode": "Indexed",
+  "policyRule": {
+    "if": {
+      "not": {
+        "field": "[concat('tags[', parameters('tagName'), ']')]",
+        "equals": "[parameters('listofallowedtagValues')]"
+      }
+    },
+    "then": {
+      "effect": "deny"
+    }
+  },
+  "parameters": {
+		"effect": {
+      "type": "String",
+      "metadata": {
+        "displayName": "Effect",
+        "description": "Enable or disable the execution of the audit policy"
+      },
+      "allowedValues": [
+        "Audit",
+        "Deny",
+        "Disabled"
+      ],
+      "defaultValue": "Deny"
+    },
+    "tagName": {
+      "type": "String",
+      "metadata": {
+        "displayName": "Environment",
+        "description": "Name of environment type"
+      }
+    },
+		"listofallowedtagValues": {
+      "type": "Array",
+       "metadata": {
+         "displayName": "Environment",
+         "description": "Name of SDLC stage"
+       },
+       "allowedValues": [
+         "Development",
+         "Test",
+         "Stage",
+         "Production"
+       ]
+    }
+  }
+}
