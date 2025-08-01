@@ -1,0 +1,53 @@
+{
+  "mode": "All",
+  "policyRule": {
+    "if": {
+      "anyOf": [
+        {
+          "field": "type",
+          "equals": "Microsoft.Resources/subscriptions/resourceGroups"
+        }
+      ],
+      "allOf": [
+        {
+          "field": "tags['Application']",
+          "exists": "false"
+        },
+        {
+          "field": "tags['Office']",
+          "exists": "false"
+        },
+        {
+          "field": "tags['Division']",
+          "exists": "false"
+        },
+        {
+          "field": "tags['Branch']",
+          "exists": "false"
+        },
+        {
+          "field": "tags['POC']",
+          "exists": "false"
+        }
+      ]
+    },
+    "then": {
+      "effect": "[parameters('effect')]"
+    }
+  },
+  "parameters": {
+    "effect": {
+      "type": "String",
+      "metadata": {
+        "displayName": "Effect",
+        "description": "Enable or disable the execution of the policy"
+      },
+      "allowedValues": [
+        "Audit",
+        "Deny",
+        "Disabled"
+      ],
+      "defaultValue": "Deny"
+    }
+  }
+}
