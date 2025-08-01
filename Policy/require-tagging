@@ -1,22 +1,28 @@
 {
-  "mode": "Indexed",
+  "mode": "All",
   "policyRule": {
     "if": {
-      "not": {
-        "field": "[concat('tags[', parameters('tagName'), ']')]",
-        "equals": "[parameters('listofallowedtagValues')]"
-      }
+      "allOf": [
+        {
+          "field": "type",
+          "equals": "Microsoft.Resources/subscriptions/resourceGroups"
+        },
+        {
+          "field": "tags['Environment']",
+          "notIn": "[parameters('listofallowedtagValues')]"
+        }
+      ]
     },
     "then": {
-      "effect": "deny"
+      "effect": "[parameters('effect')]"
     }
   },
   "parameters": {
-		"effect": {
+    "effect": {
       "type": "String",
       "metadata": {
         "displayName": "Effect",
-        "description": "Enable or disable the execution of the audit policy"
+        "description": "Enable or disable the execution of the policy"
       },
       "allowedValues": [
         "Audit",
@@ -25,25 +31,18 @@
       ],
       "defaultValue": "Deny"
     },
-    "tagName": {
-      "type": "String",
-      "metadata": {
-        "displayName": "Environment",
-        "description": "Name of environment type"
-      }
-    },
-		"listofallowedtagValues": {
+    "listofallowedtagValues": {
       "type": "Array",
-       "metadata": {
-         "displayName": "Environment",
-         "description": "Name of SDLC stage"
-       },
-       "allowedValues": [
-         "Development",
-         "Test",
-         "Stage",
-         "Production"
-       ]
+      "metadata": {
+        "displayName": "Allowed Tag Values",
+        "description": "List of allowed values for the tag"
+      },
+      "allowedValues": [
+        "Development",
+        "Test",
+        "Stage",
+        "Production"
+      ]
     }
   }
 }
