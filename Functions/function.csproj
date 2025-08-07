@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <!-- Use Azure Functions v4 -->
+    <AzureFunctionsVersion>v4</AzureFunctionsVersion>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Azure Functions runtime -->
+    <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="4.*" />
+    <!-- CSV parsing -->
+    <PackageReference Include="CsvHelper" Version="30.*" />
+    <!-- JSON serialization -->
+    <PackageReference Include="Newtonsoft.Json" Version="13.*" />
+  </ItemGroup>
+
+</Project>
