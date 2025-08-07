@@ -60,7 +60,7 @@ function Refresh-TokenIfNeeded {
     if ($elapsed -ge 55) {
         Write-Output "Access token expired after $([int]$elapsed) minutes. Refreshing..."
         $auth = Get-GraphAccessToken -TenantId $global:tenantId -ClientId $global:clientId -ClientSecret $global:clientSecret
-        
+
         if (-not $auth.token) {
             throw "Failed to get new access token"
         }
@@ -76,27 +76,25 @@ function Invoke-GraphGet {
     param ([string]$Uri)
 
     Refresh-TokenIfNeeded
-
     $headers = @{ Authorization = "Bearer $global:accessToken" }
 
     $maxRetries = 5
     $retryCount = 0
-   
-    while ($retryCount -lt $maxRetries) {
-        try{
-            return (Invoke-RestMethod -Uri $Uri -Headers $headers -Method Get)
-        } catch {
-            if ($_.Exception.Response -and $_.Exception.Response.StatusCode.Value__ -eq 429) {
-                $retryAfter = $_.Exception.Response.Headers["Retry-After"]
-                if (-not $retryAfter) {
-                    $retryAfter = 10
-                }
 
-                Write-Warning "Hit rate limit (429). Retrying in $retryAfter seconds..."
+    while ($retryCount -lt $maxRetries) {
+        try {
+            return Invoke-RestMethod -Uri $Uri -Headers $headers -Method Get
+        } catch {
+            $status = $_.Exception.Response.StatusCode.Value__
+            if ($status -eq 429 -or $status -ge 500) {
+                $retryAfter = $_.Exception.Response.Headers["Retry-After"]
+                if (-not $retryAfter) { $retryAfter = 10 }
+
+                Write-Warning "Retrying ($status): $Uri in $retryAfter seconds..."
                 Start-Sleep -Seconds ([int]$retryAfter)
                 $retryCount++
             } else {
-                Write-Error "Graph API call failed: $($_.Exception.Message)"
+                Write-Error "Graph API call failed ($status): $($_.Exception.Message)"
                 throw $_
             }
         }
@@ -108,7 +106,7 @@ function Invoke-GraphGet {
 function Get-NextLink {
     $uri = Get-AutomationVariable -Name 'DetectedAppsNextLink'
     if (-not $uri) {
-        $uri = 'https://graph.microsoft.com/v1.0/deviceManagement/detectedApps?$top=500'
+        $uri = 'https://graph.microsoft.com/v1.0/deviceManagement/detectedApps?$top=100'
     }
     return $uri
 }
@@ -134,7 +132,7 @@ $appsProcessed = 0
             Write-Warning "Skipping app $id"
             continue
         }
-        
+
         foreach ($appDevice in $appDevices.value) {
             $partitionKey = "DefaultPartitionKey"
             $rowKey       = [guid]::NewGuid().ToString()
@@ -161,13 +159,13 @@ $appsProcessed = 0
 
             #Upload App Inventory to Azure Table
             Add-AzTableRow -table $table.CloudTable -partitionKey $partitionKey -rowKey $rowKey -property $properties | Out-Null
-    
+
             #Get last 5 digits of token to verifiy token refresh
             #Write-Output $global:accessToken.Substring($global:accessToken.Length - 5)
-    
+
             #Delay to avoid rate limits
             Start-Sleep -Milliseconds 500
-    
+
         }
         $appsProcessed++
     }
