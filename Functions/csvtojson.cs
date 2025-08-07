@@ -1,71 +1,80 @@
-using CsvHelper;
-using Microsoft.Azure.WebJobs;
-using Microsoft.Azure.WebJobs.Extensions.Http;
-using Microsoft.Azure.WebJobs.Host;
-using Newtonsoft.Json;
 using System;
+using System.Globalization;
 using System.IO;
 using System.Net;
-using System.Net.Http;
+using System.Threading.Tasks;
+using CsvHelper;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Extensions.Http;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 
 namespace MyFunctions
 {
-  public static class csvtojson
-  {
-    [FunctionName("NessusReceiver")]
-    public static HttpResponseMessage Run(
-      [HttpTrigger(AuthorizationLevel.Function, new string[] {"get", "post"}, Route = null)] HttpRequestMessage req,
-      TraceWriter log)
+    public static class CsvToJson
     {
-      log.Info("C# HTTP trigger function CSVToJSON started a request.");
-      string result = req.Content.ReadAsStringAsync().Result;
-      int num = 0;
-      try
-      {
-        using (TextReader textReader = (TextReader) new StringReader(result))
+        [FunctionName("NessusReceiver")]
+        public static async Task<IActionResult> Run(
+            [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req,
+            ILogger log)
         {
-          while (textReader.Peek() > 0)
-          {
-            if (!textReader.ReadLine().Contains(","))
-              ++num;
-            else
-              break;
-          }
-        }
-        log.Info(string.Format("Lines Skipped : {0}", (object) num));
-        using (TextReader reader = (TextReader) new StringReader(result))
-        {
-          for (int index = 1; index <= num; ++index)
-            reader.ReadLine();
-          using (CsvReader csvReader = new CsvReader(reader))
-          {
-            string str = JsonConvert.SerializeObject((object) csvReader.GetRecords<object>());
-            log.Info("C# HTTP trigger function CSVToJSON completed a request.");
-            return System.Net.Http.HttpRequestMessageExtensions.CreateResponse<string>(req, HttpStatusCode.OK, str);
-          }
-        }
-      }
-      catch (Exception ex)
-      {
-        log.Error(ex.Message);
-        log.Info("C# HTTP trigger function CSVToJSON Error.");
-        return System.Net.Http.HttpRequestMessageExtensions.CreateResponse(req, HttpStatusCode.InternalServerError);
-      }
-      finally
-      {
-      }
-    }
+            log.LogInformation("CSVToJSON Azure Function started.");
 
-    private static string[] ToLines(string dataIn)
-    {
-      char[] chArray1 = new char[1]{ '\r' };
-      char[] chArray2 = new char[1]{ '\n' };
-      char[] chArray3 = chArray1;
-      if (dataIn.IndexOf('\n') > 0 && dataIn.IndexOf('\r') > 0)
-        dataIn = dataIn.Replace("\n", "");
-      else if (dataIn.IndexOf('\n') > 0)
-        chArray3 = chArray2;
-      return dataIn.Split(chArray3);
+            try
+            {
+                // Read the request body
+                string csvContent;
+                using (StreamReader reader = new StreamReader(req.Body))
+                {
+                    csvContent = await reader.ReadToEndAsync();
+                }
+
+                if (string.IsNullOrWhiteSpace(csvContent))
+                {
+                    log.LogWarning("Empty CSV content received.");
+                    return new BadRequestObjectResult("Request body is empty.");
+                }
+
+                // Detect how many non-data lines to skip
+                int skipCount = 0;
+                using (StringReader sr = new StringReader(csvContent))
+                {
+                    string? line;
+                    while ((line = sr.ReadLine()) != null)
+                    {
+                        if (!line.Contains(","))
+                            skipCount++;
+                        else
+                            break;
+                    }
+                }
+
+                log.LogInformation($"Lines skipped: {skipCount}");
+
+                // Convert CSV to JSON
+                using (StringReader sr = new StringReader(csvContent))
+                {
+                    // Skip non-data lines
+                    for (int i = 0; i < skipCount; i++)
+                        sr.ReadLine();
+
+                    using (var csv = new CsvReader(sr, CultureInfo.InvariantCulture))
+                    {
+                        var records = csv.GetRecords<dynamic>();
+                        string json = JsonConvert.SerializeObject(records, Formatting.Indented);
+
+                        log.LogInformation("CSVToJSON Azure Function completed successfully.");
+                        return new OkObjectResult(json);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                log.LogError(ex, "Error occurred while converting CSV to JSON.");
+                return new StatusCodeResult((int)HttpStatusCode.InternalServerError);
+            }
+        }
     }
-  }
 }
